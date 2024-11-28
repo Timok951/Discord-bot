@@ -86,7 +86,7 @@ async def on_message(message):
         return
 
     if message.content.startswith('Helian') :
-        await message.reply('at your service', mention_author=True)
+        await message.reply('Ready for commands', mention_author=True)
     
     if  message.attachments:
         for att in message.attachments:
