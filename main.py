@@ -112,8 +112,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('hello') :
-        await message.reply('Hello!', mention_author=True)
+    if message.content.startswith('Helian') :
+        await message.reply('at your service', mention_author=True)
     
     if  message.attachments:
         for att in message.attachments:
