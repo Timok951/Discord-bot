@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 import discord 
 import cv2
-import difflib
 import json
 
 images=[]
