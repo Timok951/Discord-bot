@@ -11,6 +11,8 @@ import logging
 from answerslist import answers, work, workreminder
 from discord.ext import tasks
 
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+discord.utils.setup_logging(level=logging.INFO, root=False)
 
 with open('reminderimage.png', 'rb') as f:
     picture = discord.File(f)
@@ -131,7 +133,7 @@ utc = datetime.timezone.utc
 timereminder = datetime.time(hour=9, minute=0, tzinfo=utc)
 timereminder2 = datetime.time(hour=6, minute=0, tzinfo=utc)
 
-gunsmoke_start_delay = datetime.datetime(days=9, hour=9)
+gunsmoke_start_delay = datetime.timedelta(days=9)
 gunsmoke_duration =  datetime.timedelta(days=7)
 gunsmoke_break = datetime.timedelta(days=30)
 
@@ -224,7 +226,7 @@ async def on_message(message):
 
 
 def main():
-    client.run(TOKEN)
+    client.run(TOKEN, log_handler=handler)
 
 
 if __name__ == '__main__':
