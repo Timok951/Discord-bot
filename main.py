@@ -188,8 +188,11 @@ async def platoon_timer():
     print("reminder for current day was send")
     
     await channel.send(returnworkanswereminder1())
-    if checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow ) != None:
-        await channel.send(str(checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow)))
+
+    gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow)
+
+    if gunsmokeanswers != None:
+        await channel.send(str(gunsmokeanswers))
 
     if ran == 0:
         await channel.send(file=picture)
@@ -209,11 +212,7 @@ async def on_ready():
     if not platoon_timer2.is_running():
         platoon_timer2.start()
 
-    gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow)
 
-    if gunsmokeanswers != None:
-        channel = client.get_channel(1304149985712930889)
-        await channel.send(str(gunsmokeanswers))
 
 @client.event
 async def on_message(message):
