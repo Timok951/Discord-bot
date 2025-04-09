@@ -208,10 +208,11 @@ async def on_ready():
         platoon_timer.start()
     if not platoon_timer2.is_running():
         platoon_timer2.start()
-    
-    if checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow ) != None:
+
+    gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow)
+
+    if gunsmokeanswers != None:
         channel = client.get_channel(1304149985712930889)
-        gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow)
         await channel.send(str(gunsmokeanswers))
 
 @client.event
