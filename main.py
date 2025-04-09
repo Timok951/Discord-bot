@@ -8,10 +8,12 @@ import random
 import datetime
 import re
 import logging
+from gunsmoke import checkgunsmoke
 from answerslist import answers, work, workreminder
 from discord.ext import tasks
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+
 discord.utils.setup_logging(level=logging.INFO, root=False)
 
 with open('reminderimage.png', 'rb') as f:
@@ -133,12 +135,6 @@ utc = datetime.timezone.utc
 timereminder = datetime.time(hour=9, minute=0, tzinfo=utc)
 timereminder2 = datetime.time(hour=8, minute=0, tzinfo=utc)
 
-gunsmoke_start_delay = datetime.timedelta(days=9)
-gunsmoke_duration =  datetime.timedelta(days=6)
-gunsmoke_break = datetime.timedelta(days=30)
-
-event_start = datetime.datetime.now(utc) + gunsmoke_start_delay
-event_end = event_start + gunsmoke_duration
 
 @tasks.loop(time=timereminder)
 async def platoon_timer():
@@ -147,14 +143,11 @@ async def platoon_timer():
     now = datetime.datetime.now(utc)
 
     channel = client.get_channel(1321747276129112064)
-    print("message was send")
+    print("reminder for current day was send")
+    
     await channel.send(returnworkanswereminder1())
-    #if event_start <= now < event_end:
-        #await channel.send("Gunsmoke time! 🚨🚬")
-    #elif now >= event_end:
-       # event_start = now + gunsmoke_break
-        #event_end = event_start + gunsmoke_duration
-       # print(f"Следующее событие Gunsmoke начнётся {event_start.strftime('%Y-%m-%d %H:%M:%S UTC')}")
+    if checkgunsmoke() != None:
+        await channel.send(checkgunsmoke())
 
     if ran == 0:
         await channel.send(file=picture)
@@ -163,7 +156,7 @@ async def platoon_timer():
 @tasks.loop(time=timereminder2)
 async def platoon_timer2():
     channel = client.get_channel(1321747276129112064)
-    print("message was send")
+    print("reminder for previous task was send")
     await channel.send(returnworkanswerreminder2())       
 
 @client.event
