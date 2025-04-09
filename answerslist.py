@@ -1,3 +1,4 @@
+
 answers = [
     "I think I have already seen this image...yes it was here before",
     "This image was already send",
