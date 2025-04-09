@@ -22,4 +22,6 @@ work = [
 
 workreminder = [
     "<@&1321746518314586143>, If you did not complete daily task it is the best time to do it",
+    "<@&1321746518314586143>, I hope you all comleted daily tasks",
+
 ]

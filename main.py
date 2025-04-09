@@ -41,12 +41,12 @@ if os.path.exists("imagehash.json"):
 def returnanswers():
     ran = random.randint(0, 7)
     return answers[ran]
-def returnworkanswer():
-    ran = random.randint(0, 7)
-    return workreminder[ran]
-def returnworkanswerreminder():
+def returnworkanswereminder1():
     ran = random.randint(0, 7)
     return work[ran]
+def returnworkanswerreminder2():
+    ran = random.randint(0, 1)
+    return workreminder[ran]
 
 def CompareLinks(message, server, link):
     try:
@@ -131,10 +131,10 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 utc = datetime.timezone.utc
 timereminder = datetime.time(hour=9, minute=0, tzinfo=utc)
-timereminder2 = datetime.time(hour=6, minute=0, tzinfo=utc)
+timereminder2 = datetime.time(hour=8, minute=0, tzinfo=utc)
 
 gunsmoke_start_delay = datetime.timedelta(days=9)
-gunsmoke_duration =  datetime.timedelta(days=7)
+gunsmoke_duration =  datetime.timedelta(days=6)
 gunsmoke_break = datetime.timedelta(days=30)
 
 event_start = datetime.datetime.now(utc) + gunsmoke_start_delay
@@ -142,34 +142,37 @@ event_end = event_start + gunsmoke_duration
 
 @tasks.loop(time=timereminder)
 async def platoon_timer():
+    global event_start, event_end
     ran = random.randint(0, 7)
     now = datetime.datetime.now(utc)
 
     channel = client.get_channel(1321747276129112064)
     print("message was send")
-    await channel.send(returnworkanswer())
-    if event_start <= now < event_end:
-        await channel.send("Gunsmoke time! 🚨🚬")
-    elif now >= event_end:
-        event_start = now + gunsmoke_break
-        event_end = event_start + gunsmoke_duration
-        print(f"Следующее событие Gunsmoke начнётся {event_start.strftime('%Y-%m-%d %H:%M:%S UTC')}")
+    await channel.send(returnworkanswereminder1())
+    #if event_start <= now < event_end:
+        #await channel.send("Gunsmoke time! 🚨🚬")
+    #elif now >= event_end:
+       # event_start = now + gunsmoke_break
+        #event_end = event_start + gunsmoke_duration
+       # print(f"Следующее событие Gunsmoke начнётся {event_start.strftime('%Y-%m-%d %H:%M:%S UTC')}")
 
     if ran == 0:
         await channel.send(file=picture)
     
 
 @tasks.loop(time=timereminder2)
-async def platoon_timer():
+async def platoon_timer2():
     channel = client.get_channel(1321747276129112064)
     print("message was send")
-    await channel.send(returnworkanswerreminder())       
+    await channel.send(returnworkanswerreminder2())       
 
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
     if not platoon_timer.is_running():
         platoon_timer.start()
+    if not platoon_timer2.is_running():
+        platoon_timer2.start()
 
 @client.event
 async def on_message(message):
@@ -178,6 +181,11 @@ async def on_message(message):
 
     if message.content.startswith('Helian') :
         await message.reply('At your service', mention_author=True)
+
+    if message.content.startswith('!reminder') :
+        channel = client.get_channel(1321747276129112064)
+        print("message was send")
+        await channel.send(returnworkanswereminder1())
 
     if  message.attachments:
         for att in message.attachments:
@@ -212,17 +220,6 @@ async def on_message(message):
 
 
  
-    if len(content) > 3:
-       content.pop(0)
-
-    if content.count(message.content) >= 2 :
-        await message.reply(message.content)
-
-    if  len(content)==0:
-        content.append(message.content)
-
-    if message.content != content[0]:
-        content.append(message.content)
 
 
 def main():
