@@ -11,6 +11,8 @@ import logging
 from gunsmoke import checkgunsmoke
 from answerslist import answers, work, workreminder
 from discord.ext import tasks
+from bson import json_util
+
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
@@ -136,6 +138,46 @@ timereminder = datetime.time(hour=9, minute=0, tzinfo=utc)
 timereminder2 = datetime.time(hour=8, minute=0, tzinfo=utc)
 
 
+datenow = datetime.datetime.now()
+
+#dump
+datelastgunsmoke = datetime.datetime(2025, 3, 14)
+
+def writejson(datelastgunsmoke,gunsmokeduration ):
+    scheldue={       
+    "lastgunsmoke": datelastgunsmoke,
+    "gunsmokeduration": gunsmokeduration
+}
+    jsonObject = json.dumps(scheldue, default=json_util.default)
+    with open("scheldue.json", "w") as outfile:
+        outfile.write(jsonObject)
+            
+    with open("scheldue.json", "r") as file:
+        data = json.loads(file.read(), object_hook=json_util.object_hook)
+    return data
+
+def readjson():
+    with open("scheldue.json", "r") as file:
+        data = json.loads(file.read(), object_hook=json_util.object_hook)
+        return data
+#using read to get string
+
+    
+if os.path.exists("scheldue.json"):
+    date = readjson()
+    print(date)
+else:
+    f = open("scheldue.json", "x")
+    date = writejson(datelastgunsmoke, 7)
+    print(date)
+
+
+lastgunsmoke = date["lastgunsmoke"]
+gunsmokeduration = date["gunsmokeduration"]
+
+timebetween = datenow - lastgunsmoke
+
+
 @tasks.loop(time=timereminder)
 async def platoon_timer():
     global event_start, event_end
@@ -146,8 +188,8 @@ async def platoon_timer():
     print("reminder for current day was send")
     
     await channel.send(returnworkanswereminder1())
-    if checkgunsmoke() != None:
-        await channel.send(checkgunsmoke())
+    if checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow ) != None:
+        await channel.send(str(checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow)))
 
     if ran == 0:
         await channel.send(file=picture)
@@ -166,6 +208,11 @@ async def on_ready():
         platoon_timer.start()
     if not platoon_timer2.is_running():
         platoon_timer2.start()
+    
+    if checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow ) != None:
+        channel = client.get_channel(1304149985712930889)
+        gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow)
+        await channel.send(str(gunsmokeanswers))
 
 @client.event
 async def on_message(message):
