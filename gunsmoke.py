@@ -30,11 +30,9 @@ def readjson():
     
 if os.path.exists("scheldue.json"):
     date = readjson()
-    print(date)
 else:
     f = open("scheldue.json", "x")
     date = writejson(datelastgunsmoke, 7)
-    print(date)
 
 
 lastgunsmoke = date["lastgunsmoke"]
