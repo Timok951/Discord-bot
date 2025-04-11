@@ -138,8 +138,6 @@ timereminder = datetime.time(hour=9, minute=0, tzinfo=utc)
 timereminder2 = datetime.time(hour=8, minute=0, tzinfo=utc)
 
 
-datenow = datetime.datetime.now()
-
 #dump
 datelastgunsmoke = datetime.datetime(2025, 3, 14)
 
@@ -172,24 +170,24 @@ else:
     print(date)
 
 
-lastgunsmoke = date["lastgunsmoke"]
-gunsmokeduration = date["gunsmokeduration"]
-
-timebetween = datenow - lastgunsmoke
 
 
 @tasks.loop(time=timereminder)
 async def platoon_timer():
     global event_start, event_end
     ran = random.randint(0, 7)
-    now = datetime.datetime.now(utc)
+    now = datetime.datetime.now()
 
     channel = client.get_channel(1321747276129112064)
     print("reminder for current day was send")
     
     await channel.send(returnworkanswereminder1())
+    lastgunsmoke = date["lastgunsmoke"]
+    gunsmokeduration = date["gunsmokeduration"]
 
-    gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow)
+    timebetween = now - lastgunsmoke
+
+    gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,now)
 
     if gunsmokeanswers != None:
         await channel.send(str(gunsmokeanswers))
@@ -211,6 +209,16 @@ async def on_ready():
         platoon_timer.start()
     if not platoon_timer2.is_running():
         platoon_timer2.start()
+
+    now = datetime.datetime.now()
+
+    lastgunsmoke = date["lastgunsmoke"]
+    gunsmokeduration = date["gunsmokeduration"]
+
+    timebetween = now - lastgunsmoke
+
+    gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,now)
+    print(gunsmokeanswers)
 
 
 
