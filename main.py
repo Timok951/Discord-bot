@@ -13,7 +13,7 @@ from answerslist import answers, work, workreminder
 from discord.ext import tasks
 from bson import json_util
 
-
+data = None
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
 discord.utils.setup_logging(level=logging.INFO, root=False)
@@ -101,7 +101,7 @@ def CompareImages(message, server):
 #function calculateHash
 def CalcImageHash(FileName):
     image = cv2.imread(FileName)
-    resized = cv2.resize(image, (32,32), interpolation = cv2.INTER_AREA)#make image small
+    resized = cv2.resize(image, (16,16), interpolation = cv2.INTER_AREA)#make image small
     gray_image=cv2.cvtColor(resized,cv2.COLOR_BGR2GRAY)#Make Image Black and white
 
     dct = cv2.dct(np.float32(gray_image))
@@ -140,8 +140,8 @@ timereminder2 = datetime.time(hour=8, minute=0, tzinfo=utc)
 
 #dump
 datelastgunsmoke = datetime.datetime(2025, 3, 14)
-
 def writejson(datelastgunsmoke,gunsmokeduration ):
+    global data
     scheldue={       
     "lastgunsmoke": datelastgunsmoke,
     "gunsmokeduration": gunsmokeduration
@@ -160,7 +160,6 @@ def readjson():
         return data
 #using read to get string
 
-    
 if os.path.exists("scheldue.json"):
     date = readjson()
     print(date)

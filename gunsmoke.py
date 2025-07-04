@@ -9,6 +9,7 @@ datenow = datetime.datetime.now()
 datelastgunsmoke = datetime.datetime(2025, 3, 14)
 
 def writejson(datelastgunsmoke,gunsmokeduration ):
+    global data
     scheldue={       
     "lastgunsmoke": datelastgunsmoke,
     "gunsmokeduration": gunsmokeduration
@@ -41,8 +42,10 @@ gunsmokeduration = date["gunsmokeduration"]
 timebetween = datenow - lastgunsmoke
 
 gunsmokereturn = "Gunsmoke time! 🚨🚬 \nDo not forget go on boss-battle"
+gunsmokereturn1 = "Gunsmoke time! 🚨🚬 \nDo not forget go on boss-battle. \n Last day to beat the boss"
 
 def checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow ):
+    global data
     print(f"LastGunsmoke day: {lastgunsmoke}")
     print(f"Gunsmoke duration if gunsmoke has not started will be seven {gunsmokeduration}")
     print(f"Time between last gunsmoke and now, if 30, Gunsmoke will start-{timebetween}")
@@ -60,7 +63,7 @@ def checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow ):
         print("Gunsmoke has ended")
         gunsmokeduration = 7
         writejson(datenow, gunsmokeduration)
-        return None
+        return(str(gunsmokereturn1))
     
     else:
         return None
