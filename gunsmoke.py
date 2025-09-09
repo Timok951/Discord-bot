@@ -1,72 +1,100 @@
 import os
 import json
 import datetime
+import json
 from bson import json_util
+from answerslist import gunsmokereturn
 
-datenow = datetime.datetime.now()
 
-#dump
-datelastgunsmoke = datetime.datetime(2025, 3, 14)
+class Gunsmokecheck:
+    #file for checks duration between two gunsmokes
+    #dump
 
-def writejson(datelastgunsmoke,gunsmokeduration ):
-    global data
-    scheldue={       
-    "lastgunsmoke": datelastgunsmoke,
-    "gunsmokeduration": gunsmokeduration
-}
-    jsonObject = json.dumps(scheldue, default=json_util.default)
-    with open("scheldue.json", "w") as outfile:
-        outfile.write(jsonObject)
-            
-    with open("scheldue.json", "r") as file:
-        data = json.loads(file.read(), object_hook=json_util.object_hook)
-    return data
-
-def readjson():
-    with open("scheldue.json", "r") as file:
-        data = json.loads(file.read(), object_hook=json_util.object_hook)
+    @staticmethod
+    def writejson(datelastgunsmoke,gunsmokeduration ):
+        
+        lastlaunch = datetime.datetime.today()
+        scheldue={       
+        "lastgunsmoke": datelastgunsmoke,
+        "gunsmokeduration": int(gunsmokeduration),
+        "lastlaunch": lastlaunch
+        
+    }
+        jsonObject = json.dumps(scheldue, default=json_util.default)
+        with open("scheldue.json", "w") as outfile:
+            outfile.write(jsonObject)
+                
+        with open("scheldue.json", "r") as file:
+            data = json.loads(file.read(), object_hook=json_util.object_hook)
         return data
-#using read to get string
 
-    
-if os.path.exists("scheldue.json"):
-    date = readjson()
-else:
-    f = open("scheldue.json", "x")
-    date = writejson(datelastgunsmoke, 7)
+    @staticmethod
+    def readjson():
+        if os.path.exists("scheldue.json"):
+            try:
+                with open("scheldue.json", "r") as file:
+                    data = json.loads(file.read(), object_hook=json_util.object_hook)
+                return data
+            except Exception as e:
+                year = int(input('Enter a year'))
+                month = int(input('Enter a month'))
+                day = int(input('Enter a day'))
+                date1 = datetime.datetime(year, month, day)
+                gusmokeduration = input()
+                return Gunsmokecheck.writejson(date1,gusmokeduration)
+                
+        else:
+                year = int(input('Enter a year'))
+                month = int(input('Enter a month'))
+                day = int(input('Enter a day'))
+                date1 = datetime.datetime(year, month, day)
+                print("input gunsmoke duration")
+                gusmokeduration = input()
+                return Gunsmokecheck.writejson(date1,gusmokeduration)
+                                 
+    @staticmethod
+    def checkgunsmoke(): 
+        
+        datenow = datetime.datetime.today()
 
-
-lastgunsmoke = date["lastgunsmoke"]
-gunsmokeduration = date["gunsmokeduration"]
-
-timebetween = datenow - lastgunsmoke
-
-gunsmokereturn = "Gunsmoke time! 🚨🚬 \nDo not forget go on boss-battle"
-gunsmokereturn1 = "Gunsmoke time! 🚨🚬 \nDo not forget go on boss-battle. \n Last day to beat the boss"
-
-def checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,datenow ):
-    global data
-    print(f"LastGunsmoke day: {lastgunsmoke}")
-    print(f"Gunsmoke duration if gunsmoke has not started will be seven {gunsmokeduration}")
-    print(f"Time between last gunsmoke and now, if 30, Gunsmoke will start-{timebetween}")
-    if timebetween >= datetime.timedelta(days=30) and gunsmokeduration >= 7:
-        print("Gunsmoke has started")
-        gunsmokeduration = gunsmokeduration -1
-        writejson(lastgunsmoke, gunsmokeduration)
-        return(str(gunsmokereturn))
-    elif timebetween >= datetime.timedelta(days=30) and gunsmokeduration > 0:
-        print("Gunsmoke is continued")
-        gunsmokeduration = gunsmokeduration -1
-        writejson(lastgunsmoke, gunsmokeduration)
-        return(str(gunsmokereturn))
-    elif timebetween >= datetime.timedelta(days=30) and gunsmokeduration == 0:
-        print("Gunsmoke has ended")
-        gunsmokeduration = 7
-        writejson(datenow, gunsmokeduration)
-        return(str(gunsmokereturn1))
-    
-    else:
-        return None
-
+        date = Gunsmokecheck.readjson()
+       
+        lastgunsmoke = date["lastgunsmoke"]
+        gunsmokeduration = int(date["gunsmokeduration"])
+        lastlaunch = date["lastlaunch"]
+        
+        daysincelastlaunch = (datenow.date() - lastgunsmoke.date()).days
+        
+        print(f"LastGunsmoke day: {lastgunsmoke}")
+        print(f"Gunsmoke duration, if 0 gunsmoke end {gunsmokeduration}")
+        print(f"Time between last gunsmoke and now, if 7, Gunsmoke will start {daysincelastlaunch}")
+        
+        if lastlaunch == datenow:
+            print("today date = last date")
+        else:
+            print(f"lastlaunch {lastlaunch}")
+        
+        #if gunsmoke active    
+        if lastlaunch.date() == datenow.date():
+            print("Gunsmoke was already launched today")
+            return None
+        
+        #if gunsmoke ended and has 7 days lasted     
+        if gunsmokeduration > 0:
+            #Gunsmoke continue
+            print("Gunsmoke has started")
+            gunsmokeduration -=1
+            Gunsmokecheck.writejson(lastgunsmoke, gunsmokeduration)
+            return(str(gunsmokereturn[0]))
+        
+        #gunsmoke ended     
+        if gunsmokeduration == 0 and daysincelastlaunch >= 7:
+            print("Gunsmoke duration")
+            gunsmokeduration = 7
+            lastgunsmoke = datenow
+            return(str[gunsmokereturn[0]])
+        
+        print("No gunsmoke for today")
+        Gunsmokecheck.writejson(lastgunsmoke, gunsmokeduration)
 
 

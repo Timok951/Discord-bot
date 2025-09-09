@@ -1,4 +1,6 @@
+import logging.handlers
 import os 
+import sys
 from dotenv import load_dotenv
 import discord 
 import cv2
@@ -8,39 +10,71 @@ import random
 import datetime
 import re
 import logging
-from gunsmoke import checkgunsmoke
+import ping3  #for pinging discord servers because with RKN it has some problems
+import Gunsmoke
 from answerslist import answers, work, workreminder
 from discord.ext import tasks
-from bson import json_util
+
+from bson import json_util #if I remember correctly it for time managment
 
 data = None
-handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
-discord.utils.setup_logging(level=logging.INFO, root=False)
+
+
+# file logging
+logger = logging.getLogger('discord')
+logger.setLevel(logging.INFO)
+logging.getLogger('discord.http').setLevel(logging.INFO)
+
+handler = logging.handlers.RotatingFileHandler(
+    filename='discord.log',
+    encoding='utf-8',
+    maxBytes=32 * 1024 * 1024,  # 32 MiB
+    backupCount=5,  # Rotate through 5 files
+)
+dt_fmt = '%Y-%m-%d %H:%M:%S'
+formatter = logging.Formatter('[{asctime}] [{levelname:<8}] {name}: {message}', dt_fmt, style='{')
+handler.setFormatter(formatter)
+
+#logging console
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setFormatter(formatter)
+
+logger.addHandler(handler)
+logger.addHandler(console_handler)
+
 
 with open('reminderimage.png', 'rb') as f:
     picture = discord.File(f)
 
 content  = []
 
+new_data =[{
+    "hash": 0,
+    "message": 0,
+    "server": 0
+        }]
 
-if os.path.exists("imagehash.json"):
+#checking if it has json file with imagehashes
+if os.path.isfile("imagehash.json") and os.access("imagehash.json", os.R_OK):
+    #check if file exists
+    logger.info("Imagehash exists")
     try:
         with open('imagehash.json','r') as file:
             exsisting_images=json.load(file)
     except Exception as e:
-        new_data =[{
-            
-            "hash": 0,
-            "message": 0,
-            "server": 0
-                }]
         json_object = json.dumps(new_data, indent=4)
         with open('imagehash.json','w') as outfile:
             outfile.write(json_object) 
         with open('imagehash.json','r') as file:
             exsisting_images=json.load(file)
-
+else:
+    logger.info("Imagehas does not exists. Creating imagehash file")
+    #otherwise creating file with json dump
+    with open("imagehash.json", 'w') as outfile:
+        json_object = json.dumps(new_data, indent=4)
+        outfile.write(json_object)
+        exsisting_images = new_data
 
 def returnanswers():
     ran = random.randint(0, 7)
@@ -77,7 +111,6 @@ def CompareImages(message, server):
             hashscompare = CompareHash(img["hash"], newimagehash)
             if hashscompare > 0.99999 and img["server"] == server:
                 return img["message"]
-
         new_data ={
             "hash": newimagehash,
             "message": message,
@@ -88,6 +121,7 @@ def CompareImages(message, server):
             json.dump(exsisting_images, file, indent=4)  
         return None
     except Exception as e:
+        logging.warning(f"Problem with calculating imagehash.{e}")
         new_data ={
             "hash": newimagehash,
             "message": message,
@@ -112,7 +146,6 @@ def CalcImageHash(FileName):
 
     return hash_value
 
-
 def CompareHash(hash1,hash2):
     dot_product = np.dot(hash1, hash2)
     norm_a = np.linalg.norm(hash1)
@@ -122,6 +155,7 @@ def CompareHash(hash1,hash2):
         return 0.0
     
     similarity = dot_product / (norm_a * norm_b)
+    logging.info(f"Simularity between images is {e}")
     return similarity
 
 #Load token
@@ -137,89 +171,58 @@ utc = datetime.timezone.utc
 timereminder = datetime.time(hour=9, minute=0, tzinfo=utc)
 timereminder2 = datetime.time(hour=8, minute=0, tzinfo=utc)
 
-
-#dump
-datelastgunsmoke = datetime.datetime(2025, 3, 14)
-def writejson(datelastgunsmoke,gunsmokeduration ):
-    global data
-    scheldue={       
-    "lastgunsmoke": datelastgunsmoke,
-    "gunsmokeduration": gunsmokeduration
-}
-    jsonObject = json.dumps(scheldue, default=json_util.default)
-    with open("scheldue.json", "w") as outfile:
-        outfile.write(jsonObject)
-            
-    with open("scheldue.json", "r") as file:
-        data = json.loads(file.read(), object_hook=json_util.object_hook)
-    return data
-
-def readjson():
-    with open("scheldue.json", "r") as file:
-        data = json.loads(file.read(), object_hook=json_util.object_hook)
-        return data
-#using read to get string
-
-if os.path.exists("scheldue.json"):
-    date = readjson()
-    print(date)
-else:
-    f = open("scheldue.json", "x")
-    date = writejson(datelastgunsmoke, 7)
-    print(date)
-
-
-
-
 @tasks.loop(time=timereminder)
 async def platoon_timer():
     global event_start, event_end
     ran = random.randint(0, 7)
-    now = datetime.datetime.now()
 
-    channel = client.get_channel(1321747276129112064)
-    print("reminder for current day was send")
-    
-    await channel.send(returnworkanswereminder1())
-    lastgunsmoke = date["lastgunsmoke"]
-    gunsmokeduration = date["gunsmokeduration"]
-
-    timebetween = now - lastgunsmoke
-
-    gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,now)
+    try:
+        channel = client.get_channel(1321747276129112064)
+        await channel.send(returnworkanswereminder1())
+        logger.info("reminder for current day was send")
+    except Exception as e:
+        logger.error("problem with getting channel and sending the message for first daily reminder")
+        logger.info(ping3.ping("discord.com"))
+        
+    gunsmokeanswers = Gunsmoke.Gunsmokecheck.checkgunsmoke()
 
     if gunsmokeanswers != None:
         await channel.send(str(gunsmokeanswers))
 
     if ran == 0:
-        await channel.send(file=picture)
-    
+        try:
+            await channel.send(file=picture)
+        except Exception as e:
+            logger.error("problem with sending picture reminder")
+            logger.info(ping3.ping("discord.com"))
 
+
+#Time reminder for previous task
 @tasks.loop(time=timereminder2)
 async def platoon_timer2():
-    channel = client.get_channel(1321747276129112064)
-    print("reminder for previous task was send")
-    await channel.send(returnworkanswerreminder2())       
+    try:
+        channel = client.get_channel(1321747276129112064)
+        logger.info("reminder for previous task was send")
+        await channel.send(returnworkanswerreminder2())
+    except Exception as e:
+        logger.error("problem with getting to channel and sending workanswereminder for previous task")
+        logger.info(ping3.ping("discord.com"))
+
 
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
+    logger.info(f"We have logged as {client.user}")
+    logger.info(ping3.ping("discord.com"))
     if not platoon_timer.is_running():
         platoon_timer.start()
     if not platoon_timer2.is_running():
         platoon_timer2.start()
 
-    now = datetime.datetime.now()
+    gunsmokeanswers = Gunsmoke.Gunsmokecheck.checkgunsmoke()
+    logger.info(gunsmokeanswers)
 
-    lastgunsmoke = date["lastgunsmoke"]
-    gunsmokeduration = date["gunsmokeduration"]
-
-    timebetween = now - lastgunsmoke
-
-    gunsmokeanswers = checkgunsmoke(timebetween, gunsmokeduration,lastgunsmoke,now)
-    print(gunsmokeanswers)
-
-
+previousmsgs = []
 
 @client.event
 async def on_message(message):
@@ -230,23 +233,52 @@ async def on_message(message):
         await message.reply('At your service', mention_author=True)
 
     if message.content.startswith('!reminder') :
-        channel = client.get_channel(1321747276129112064)
         print("message was send")
-        await channel.send(returnworkanswereminder1())
+        await message.reply(returnworkanswereminder1())
+        try:
+            await message.reply(file=picture)
+        except Exception as e:
+            logger.error("problem with sending picture reminder")
+    
+    content = message.content
+    channel_id = message.channel
+    #add image to list
+    try:
+        previousmsgs.append({"content": content, "channel":channel_id})
+        logger.info("message was append")
+    except Exception as e:
+        print(f"error in appending{e}")
+    
+    count = sum(1 for msg in previousmsgs if msg["content"] == content and msg["channel"] == channel_id)
+    
+    #if has 3 times 
+    if count == 3:
+        logger.info("Count has 3")
+        await message.reply(content, mention_author = False)
+        #deleting messages
+        logger.info("Deleting images")
+        previousmsgs[:] = [msg for msg in previousmsgs if not (msg["content"] == content and msg["channel"] == channel_id)]
 
     if  message.attachments:
         for att in message.attachments:
             if (att.content_type.startswith("image") and (str(message.channel) == "sfw-arts" or  str(message.channel)=="nsfw-art")):
                 idmsg = message.jump_url
                 server = message.guild.id
-                await att.save("images/savedimage.png")
+                try:
+                    await att.save("images/savedimage.png")
+                except Exception as e:
+                    logger.error("problem with saving image")
+                    pinglog = ping3.ping("discord.com")
+                    logger.info(f"discord ping {pinglog}")
+
                 if CompareImages(idmsg, server) != None:
                     idmsgsent  = CompareImages(idmsg, server)
                     try:
                         await message.reply(f"" + returnanswers() + str(idmsgsent) , mention_author=True)
 
                     except:
-                       await message.channel.send("I saw the image, but it disappeared..... anyway.")            
+                       await message.channel.send("I saw the image, but it disappeared..... anyway.")
+                       logger.warning("Message was already deleted or error occured")            
                 else:
                    break
     if (("https://x.com" in message.content) and (str(message.channel) == "sfw-arts" or str(message.channel) == "nsfw-art")):
@@ -262,15 +294,15 @@ async def on_message(message):
 
                 except:
                     await message.channel.send("I saw the image, but it disappeared..... anyway.")
+                    logger.warning("Message was already deleted or error occured")            
             else: 
                 break   
 
 
- 
-
 
 def main():
     client.run(TOKEN, log_handler=handler)
+    logger.info("Bot has started")
 
 
 if __name__ == '__main__':

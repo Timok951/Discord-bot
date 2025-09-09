@@ -26,3 +26,6 @@ workreminder = [
     "<@&1321746518314586143>, I hope you all comleted daily tasks",
 
 ]
+
+gunsmokereturn = [ "Gunsmoke time! 🚨🚬 \nDo not forget go on boss-battle",
+"Gunsmoke time! 🚨🚬 \nDo not forget go on boss-battle. \n Last day to beat the boss"]
