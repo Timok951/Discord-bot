@@ -14,7 +14,7 @@ import ping3  #for pinging discord servers because with RKN it has some problems
 import gunsmoke
 from answerslist import answers, work, workreminder
 from discord.ext import tasks
-
+import asyncio
 
 from bson import json_util #if I remember correctly it for time managment
 
@@ -224,11 +224,10 @@ async def on_ready():
     logger.info(gunsmokeanswers)
 
 previous = {
-    "content": None,
-    "channel": None,
-    "count": 0,
-    "replied": False
 }
+previous_lock = asyncio.Lock()  
+cooldown = {} 
+
 @client.event
 async def on_message(message):
     if message.author == client.user:
@@ -245,27 +244,52 @@ async def on_message(message):
         except Exception as e:
             logger.error("problem with sending picture reminder")
 
-    global previous
+
+
     content = message.content
-    channel_id = message.channel
+    channel_id = message.channel.id
+    cooldown = {}
+    
+    if content.startswith('Helian'):
+        await message.reply('At your service', mention_author=True)
+        return
+    if content.startswith('!reminder'):
+        await message.reply(returnworkanswereminder1())
+        try:
+            await message.reply(file=picture)
+        except Exception as e:
+            logger.error("problem with sending picture reminder")
+        return
 
-    if previous.get("content") == content and previous.get("channel") == channel_id:
-        previous["count"] += 1
-        logger.info(f"Same message, count={previous['count']}")
-    else:
-        previous["content"] = content
-        previous["channel"] = channel_id
-        previous["count"] = 1
-        previous["replied"] = False
-        logger.info("New message, start new series")
+    async with previous_lock:
+        if channel_id not in previous:
+            previous[channel_id] = {"content": None, "count": 0, "replied": False}
 
-    logger.info(f"Current count: {previous['count']}")
+        if channel_id not in cooldown:
+            cooldown[channel_id] = False
 
-    if previous["count"] >= 3 and not previous.get("replied"):
-        logger.info("3 messages in a row, replying")
-        await message.reply(content, mention_author=False)
-        previous["replied"] = True  
-        previous["count"] = 0       
+        state = previous[channel_id]
+
+        if state["content"] == content:
+            state["count"] += 1
+        else:
+            state["content"] = content
+            state["count"] = 1
+            state["replied"] = False
+
+        # если канал в cooldown, не отвечаем
+        if state["count"] >= 3 and not state["replied"] and not cooldown[channel_id]:
+            await message.reply(content, mention_author=False)
+            state["replied"] = True
+            state["count"] = 0
+            cooldown[channel_id] = True  # включаем блокировку
+
+            # выключаем блокировку через 1 секунду
+            asyncio.create_task(reset_cooldown(channel_id))
+
+async def reset_cooldown(channel_id):
+    await asyncio.sleep(1)
+    cooldown[channel_id] = False
 
 
         

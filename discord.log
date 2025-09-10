@@ -8,3 +8,201 @@
 [2025-09-10 13:25:56] [INFO    ] discord: Bot has started
 [2025-09-10 13:55:44] [INFO    ] discord: Imagehash exists
 [2025-09-10 13:55:44] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:44:14] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:44:14] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:44:14] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:44:17] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 27d9aeec5daf14449d1c49a642dd92ba).
+[2025-09-10 21:44:19] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:44:19] [INFO    ] discord: 0.004305601119995117
+[2025-09-10 21:44:19] [INFO    ] discord: None
+[2025-09-10 21:44:26] [ERROR   ] discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "G:\Projects Big\Programming\Discord bot\venv\Lib\site-packages\discord\client.py", line 472, in _run_event
+    await coro(*args, **kwargs)
+  File "G:\Projects Big\Programming\Discord bot\main.py", line 254, in on_message
+    async with previous_lock:
+               ^^^^^^^^^^^^^
+NameError: name 'previous_lock' is not defined
+[2025-09-10 21:44:29] [INFO    ] discord: Bot has started
+[2025-09-10 21:44:57] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:44:57] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:44:57] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:45:00] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: a36ba204d6ccde4677c131b22410c7cf).
+[2025-09-10 21:45:02] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:45:02] [INFO    ] discord: 0.0010006427764892578
+[2025-09-10 21:45:02] [INFO    ] discord: None
+[2025-09-10 21:45:13] [INFO    ] discord: New message, start new series
+[2025-09-10 21:45:13] [INFO    ] discord: Current count: 1
+[2025-09-10 21:45:15] [INFO    ] discord: Same message, count=2
+[2025-09-10 21:45:15] [INFO    ] discord: Current count: 2
+[2025-09-10 21:45:16] [INFO    ] discord: Same message, count=3
+[2025-09-10 21:45:16] [INFO    ] discord: Current count: 3
+[2025-09-10 21:45:16] [INFO    ] discord: 3 messages in a row, replying
+[2025-09-10 21:45:20] [INFO    ] discord: Same message, count=1
+[2025-09-10 21:45:20] [INFO    ] discord: Current count: 1
+[2025-09-10 21:45:22] [INFO    ] discord: Same message, count=2
+[2025-09-10 21:45:22] [INFO    ] discord: Current count: 2
+[2025-09-10 21:45:25] [INFO    ] discord: New message, start new series
+[2025-09-10 21:45:25] [INFO    ] discord: Current count: 1
+[2025-09-10 21:45:25] [INFO    ] discord: Same message, count=2
+[2025-09-10 21:45:25] [INFO    ] discord: Current count: 2
+[2025-09-10 21:45:28] [INFO    ] discord: New message, start new series
+[2025-09-10 21:45:28] [INFO    ] discord: Current count: 1
+[2025-09-10 21:45:30] [INFO    ] discord: New message, start new series
+[2025-09-10 21:45:30] [INFO    ] discord: Current count: 1
+[2025-09-10 21:45:31] [INFO    ] discord: Same message, count=2
+[2025-09-10 21:45:31] [INFO    ] discord: Current count: 2
+[2025-09-10 21:45:32] [INFO    ] discord: Same message, count=3
+[2025-09-10 21:45:32] [INFO    ] discord: Current count: 3
+[2025-09-10 21:45:32] [INFO    ] discord: 3 messages in a row, replying
+[2025-09-10 21:45:34] [INFO    ] discord: Same message, count=1
+[2025-09-10 21:45:34] [INFO    ] discord: Current count: 1
+[2025-09-10 21:45:36] [INFO    ] discord: Same message, count=2
+[2025-09-10 21:45:36] [INFO    ] discord: Current count: 2
+[2025-09-10 21:45:38] [INFO    ] discord: Same message, count=3
+[2025-09-10 21:45:38] [INFO    ] discord: Current count: 3
+[2025-09-10 21:47:37] [INFO    ] discord: Bot has started
+[2025-09-10 21:47:40] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:47:40] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:47:40] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:47:41] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: cd05e9bc46c3b65c54df3ca608f5cc33).
+[2025-09-10 21:47:43] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:47:43] [INFO    ] discord: 0.0005741119384765625
+[2025-09-10 21:47:43] [INFO    ] discord: None
+[2025-09-10 21:47:49] [INFO    ] discord: New message, start new series
+[2025-09-10 21:47:49] [INFO    ] discord: Current count: 1
+[2025-09-10 21:47:51] [INFO    ] discord: Same message, count=2
+[2025-09-10 21:47:51] [INFO    ] discord: Current count: 2
+[2025-09-10 21:47:52] [INFO    ] discord: Same message, count=3
+[2025-09-10 21:47:52] [INFO    ] discord: Current count: 3
+[2025-09-10 21:47:52] [INFO    ] discord: 3 messages in a row, replying
+[2025-09-10 21:47:55] [INFO    ] discord: New message, start new series
+[2025-09-10 21:47:55] [INFO    ] discord: Current count: 1
+[2025-09-10 21:47:57] [INFO    ] discord: Same message, count=2
+[2025-09-10 21:47:57] [INFO    ] discord: Current count: 2
+[2025-09-10 21:47:58] [INFO    ] discord: Same message, count=3
+[2025-09-10 21:47:58] [INFO    ] discord: Current count: 3
+[2025-09-10 21:47:58] [INFO    ] discord: 3 messages in a row, replying
+[2025-09-10 21:49:06] [INFO    ] discord: Bot has started
+[2025-09-10 21:49:07] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:49:07] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:49:07] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:49:10] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: b2fe290ad62cb2503eb54ba3c4bb05b4).
+[2025-09-10 21:49:12] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:49:12] [INFO    ] discord: 0.0
+[2025-09-10 21:49:12] [INFO    ] discord: None
+[2025-09-10 21:49:21] [INFO    ] discord: New message in channel 1304149985712930889, start new series
+[2025-09-10 21:49:24] [INFO    ] discord: Same message in channel 1304149985712930889, count=2
+[2025-09-10 21:49:25] [INFO    ] discord: Same message in channel 1304149985712930889, count=3
+[2025-09-10 21:49:25] [INFO    ] discord: 3 messages in a row in channel 1304149985712930889, replying
+[2025-09-10 21:49:37] [INFO    ] discord: Same message in channel 1304149985712930889, count=1
+[2025-09-10 21:49:38] [INFO    ] discord: Same message in channel 1304149985712930889, count=2
+[2025-09-10 21:49:40] [INFO    ] discord: Same message in channel 1304149985712930889, count=3
+[2025-09-10 21:49:44] [INFO    ] discord: New message in channel 1304149985712930889, start new series
+[2025-09-10 21:49:45] [INFO    ] discord: Same message in channel 1304149985712930889, count=2
+[2025-09-10 21:49:45] [INFO    ] discord: Same message in channel 1304149985712930889, count=3
+[2025-09-10 21:49:45] [INFO    ] discord: 3 messages in a row in channel 1304149985712930889, replying
+[2025-09-10 21:49:49] [INFO    ] discord: Same message in channel 1304149985712930889, count=1
+[2025-09-10 21:49:50] [INFO    ] discord: Same message in channel 1304149985712930889, count=2
+[2025-09-10 21:49:52] [INFO    ] discord: Same message in channel 1304149985712930889, count=3
+[2025-09-10 21:49:54] [INFO    ] discord: Same message in channel 1304149985712930889, count=4
+[2025-09-10 21:49:56] [INFO    ] discord: Same message in channel 1304149985712930889, count=5
+[2025-09-10 21:49:58] [INFO    ] discord: Same message in channel 1304149985712930889, count=6
+[2025-09-10 21:49:59] [INFO    ] discord: Same message in channel 1304149985712930889, count=7
+[2025-09-10 21:51:51] [INFO    ] discord: Bot has started
+[2025-09-10 21:51:52] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:51:52] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:51:52] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:51:57] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 0c5d1f03dba0c5858dc67ce41206878d).
+[2025-09-10 21:51:59] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:51:59] [INFO    ] discord: 0.0
+[2025-09-10 21:51:59] [INFO    ] discord: None
+[2025-09-10 21:53:50] [INFO    ] discord: Bot has started
+[2025-09-10 21:53:52] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:53:52] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:53:52] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:53:54] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: c4fdc051fb5ab64711189cf00a139a69).
+[2025-09-10 21:53:56] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:53:56] [INFO    ] discord: 0.0
+[2025-09-10 21:53:56] [INFO    ] discord: None
+[2025-09-10 21:54:49] [INFO    ] discord: Bot has started
+[2025-09-10 21:56:02] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:56:02] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:56:02] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:56:05] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 13059c7565747f3a1a6c9a0aba1a8869).
+[2025-09-10 21:56:07] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:56:07] [INFO    ] discord: 0.0005307197570800781
+[2025-09-10 21:56:07] [INFO    ] discord: None
+[2025-09-10 21:56:13] [ERROR   ] discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "G:\Projects Big\Programming\Discord bot\venv\Lib\site-packages\discord\client.py", line 472, in _run_event
+    await coro(*args, **kwargs)
+  File "G:\Projects Big\Programming\Discord bot\main.py", line 253, in on_message
+    if content.startswith('Helian'):
+       ^^^^^^^
+UnboundLocalError: cannot access local variable 'content' where it is not associated with a value
+[2025-09-10 21:56:14] [ERROR   ] discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "G:\Projects Big\Programming\Discord bot\venv\Lib\site-packages\discord\client.py", line 472, in _run_event
+    await coro(*args, **kwargs)
+  File "G:\Projects Big\Programming\Discord bot\main.py", line 253, in on_message
+    if content.startswith('Helian'):
+       ^^^^^^^
+UnboundLocalError: cannot access local variable 'content' where it is not associated with a value
+[2025-09-10 21:56:15] [ERROR   ] discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "G:\Projects Big\Programming\Discord bot\venv\Lib\site-packages\discord\client.py", line 472, in _run_event
+    await coro(*args, **kwargs)
+  File "G:\Projects Big\Programming\Discord bot\main.py", line 253, in on_message
+    if content.startswith('Helian'):
+       ^^^^^^^
+UnboundLocalError: cannot access local variable 'content' where it is not associated with a value
+[2025-09-10 21:56:32] [INFO    ] discord: Bot has started
+[2025-09-10 21:56:34] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:56:34] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:56:34] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:56:36] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: a51d36effba89f9b58215fc2874c0382).
+[2025-09-10 21:56:38] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:56:38] [INFO    ] discord: 0.0009996891021728516
+[2025-09-10 21:56:38] [INFO    ] discord: None
+[2025-09-10 21:56:43] [INFO    ] discord: Bot has started
+[2025-09-10 21:56:44] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:56:44] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:56:44] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:56:47] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: a2eb60b9cf4db01efe21ef7d6ea97ab9).
+[2025-09-10 21:56:49] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:56:49] [INFO    ] discord: 0.0006687641143798828
+[2025-09-10 21:56:49] [INFO    ] discord: None
+[2025-09-10 21:57:17] [INFO    ] discord: Bot has started
+[2025-09-10 21:57:19] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:57:19] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:57:19] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:57:21] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: db7073a053b14a32f78eba1be991273a).
+[2025-09-10 21:57:23] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:57:23] [INFO    ] discord: 0.0014722347259521484
+[2025-09-10 21:57:23] [INFO    ] discord: None
+[2025-09-10 21:57:59] [ERROR   ] discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "G:\Projects Big\Programming\Discord bot\venv\Lib\site-packages\discord\client.py", line 472, in _run_event
+    await coro(*args, **kwargs)
+  File "G:\Projects Big\Programming\Discord bot\main.py", line 277, in on_message
+    asyncio.create_task(reset_cooldown(channel_id))
+                        ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'reset_cooldown' where it is not associated with a value
+[2025-09-10 21:58:06] [INFO    ] discord: Bot has started
+[2025-09-10 21:59:11] [INFO    ] discord: Imagehash exists
+[2025-09-10 21:59:11] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 21:59:11] [INFO    ] discord.client: logging in using static token
+[2025-09-10 21:59:13] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 9675ff2341ed3e78979dba308a3e292d).
+[2025-09-10 21:59:15] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 21:59:15] [INFO    ] discord: 0.0009982585906982422
+[2025-09-10 21:59:15] [INFO    ] discord: None
+[2025-09-10 22:02:18] [INFO    ] discord: Bot has started
+[2025-09-10 22:02:20] [INFO    ] discord: Imagehash exists
+[2025-09-10 22:02:20] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 22:02:20] [INFO    ] discord.client: logging in using static token
+[2025-09-10 22:02:24] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 00f16ba4f60b74849e1907ad30fe6b5c).
+[2025-09-10 22:02:26] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 22:02:26] [INFO    ] discord: 0.0
+[2025-09-10 22:02:26] [INFO    ] discord: None
+[2025-09-10 22:02:52] [INFO    ] discord: Bot has started
