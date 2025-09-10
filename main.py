@@ -264,8 +264,8 @@ async def on_message(message):
         logger.info("3 messages in a row, replying")
         await message.reply(content, mention_author=False)
         previous["replied"] = True
-        await 0.1
         previous["count"] = 0  # The will be 0
+        await 0.3
 
         
 
