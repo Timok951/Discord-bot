@@ -223,8 +223,12 @@ async def on_ready():
     gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
     logger.info(gunsmokeanswers)
 
-previous = {"content": None, "channel": None, "count": 0, "replied": True}
-
+previous = {
+    "content": None,
+    "channel": None,
+    "count": 0,
+    "replied": False
+}
 @client.event
 async def on_message(message):
     if message.author == client.user:
@@ -240,7 +244,7 @@ async def on_message(message):
             await message.reply(file=picture)
         except Exception as e:
             logger.error("problem with sending picture reminder")
-    
+
     global previous
     content = message.content
     channel_id = message.channel
@@ -257,7 +261,7 @@ async def on_message(message):
 
     logger.info(f"Current count: {previous['count']}")
 
-    if previous["count"] >= 3 and not previous.get("replied", False):
+    if previous["count"] >= 3 and not previous.get("replied"):
         logger.info("3 messages in a row, replying")
         await message.reply(content, mention_author=False)
         previous["replied"] = True  
