@@ -301,7 +301,7 @@ async def on_message(message):
 
 
 def main():
-    client.run(TOKEN, log_handler=handler)
+    client.run(TOKEN, log_handler=handler, proxy="http://127.0.0.1:10809")
     logger.info("Bot has started")
 
 
