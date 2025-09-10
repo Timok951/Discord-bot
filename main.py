@@ -223,7 +223,7 @@ async def on_ready():
     gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
     logger.info(gunsmokeanswers)
 
-previous = {"content": None, "channel": None, "count": 0}
+previous = {"content": None, "channel": None, "count": 0, "replied": False}
 
 @client.event
 async def on_message(message):
@@ -252,14 +252,15 @@ async def on_message(message):
     else:
         previous["content"] = content
         previous["channel"] = channel_id
+        previous["replied"] = False 
         previous["count"] = 1  #New count
 
     logger.info(f"Current count: {previous['count']}")
 
     # If 3 in row
-    if previous["count"] == 3:
+    if previous["count"] == 3 and previous.get("replied", False):
         logger.info("3 messages in a row, replying")
-
+        previous["replied"] = True
         await message.reply(content, mention_author=False)
         previous["count"] = 0  # The will be 0
 
