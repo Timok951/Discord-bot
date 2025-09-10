@@ -11,7 +11,7 @@ import datetime
 import re
 import logging
 import ping3  #for pinging discord servers because with RKN it has some problems
-import Gunsmoke
+import gunsmoke
 from answerslist import answers, work, workreminder
 from discord.ext import tasks
 
@@ -184,7 +184,7 @@ async def platoon_timer():
         logger.error("problem with getting channel and sending the message for first daily reminder")
         logger.info(ping3.ping("discord.com"))
         
-    gunsmokeanswers = Gunsmoke.Gunsmokecheck.checkgunsmoke()
+    gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
 
     if gunsmokeanswers != None:
         await channel.send(str(gunsmokeanswers))
@@ -219,7 +219,7 @@ async def on_ready():
     if not platoon_timer2.is_running():
         platoon_timer2.start()
 
-    gunsmokeanswers = Gunsmoke.Gunsmokecheck.checkgunsmoke()
+    gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
     logger.info(gunsmokeanswers)
 
 previousmsgs = []
