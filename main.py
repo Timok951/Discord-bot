@@ -258,9 +258,10 @@ async def on_message(message):
 
     # If 3 in row
     if previous["count"] == 3:
-        await message.reply(content, mention_author=False)
         logger.info("3 messages in a row, replying")
         previous["count"] = 0  # The will be 0
+        await message.reply(content, mention_author=False)
+
         
 
     if  message.attachments:
