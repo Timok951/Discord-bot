@@ -155,7 +155,7 @@ def CompareHash(hash1,hash2):
         return 0.0
     
     similarity = dot_product / (norm_a * norm_b)
-    logging.info(f"Simularity between images is {e}")
+    logging.info(f"Simularity between images is {similarity}")
     return similarity
 
 #Load token
