@@ -15,6 +15,7 @@ import gunsmoke
 from answerslist import answers, work, workreminder
 from discord.ext import tasks
 
+
 from bson import json_util #if I remember correctly it for time managment
 
 data = None
@@ -222,7 +223,7 @@ async def on_ready():
     gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
     logger.info(gunsmokeanswers)
 
-previousmsgs = []
+previous = {"content": None, "channel": None, "count": 0}
 
 @client.event
 async def on_message(message):
@@ -240,24 +241,27 @@ async def on_message(message):
         except Exception as e:
             logger.error("problem with sending picture reminder")
     
+    global previous
     content = message.content
     channel_id = message.channel
-    #add image to list
-    try:
-        previousmsgs.append({"content": content, "channel":channel_id})
-        logger.info("message was append")
-    except Exception as e:
-        print(f"error in appending{e}")
-    
-    count = sum(1 for msg in previousmsgs if msg["content"] == content and msg["channel"] == channel_id)
-    
-    #if has 3 times 
-    if count == 3:
-        logger.info("Count has 3")
-        await message.reply(content, mention_author = False)
-        #deleting messages
-        logger.info("Deleting images")
-        previousmsgs[:] = [msg for msg in previousmsgs if not (msg["content"] == content and msg["channel"] == channel_id)]
+
+    # Check if was in previous
+    if previous["content"] == content and previous["channel"] == channel_id:
+        previous["count"] += 1
+        logger.info(f"Same mesage")
+    else:
+        previous["content"] = content
+        previous["channel"] = channel_id
+        previous["count"] = 1  #New count
+
+    logger.info(f"Current count: {previous['count']}")
+
+    # If 3 in row
+    if previous["count"] == 3:
+        await message.reply(content, mention_author=False)
+        logger.info("3 messages in a row, replying")
+        previous["count"] = 0  # The will be 0
+        
 
     if  message.attachments:
         for att in message.attachments:
@@ -301,7 +305,7 @@ async def on_message(message):
 
 
 def main():
-    client.run(TOKEN, log_handler=handler, proxy="http://127.0.0.1:10809")
+    client.run(TOKEN, log_handler=handler)
     logger.info("Bot has started")
 
 
