@@ -253,15 +253,17 @@ async def on_message(message):
         previous["content"] = content
         previous["channel"] = channel_id
         previous["replied"] = False 
-        previous["count"] = 1  #New count
+        previous["count"] = 1  
+        logger.info("new message start new log")
+        #New count
 
     logger.info(f"Current count: {previous['count']}")
 
     # If 3 in row
-    if previous["count"] == 3 and previous.get("replied", False):
+    if previous["count"] == 3 and not previous.get("replied", False):
         logger.info("3 messages in a row, replying")
-        previous["replied"] = True
         await message.reply(content, mention_author=False)
+        previous["replied"] = True
         previous["count"] = 0  # The will be 0
 
         
