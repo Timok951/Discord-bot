@@ -223,7 +223,7 @@ async def on_ready():
     gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
     logger.info(gunsmokeanswers)
 
-previous = {"content": None, "channel": None, "count": 0, "replied": False}
+previous = {"content": None, "channel": None, "count": 0, "replied": True}
 
 @client.event
 async def on_message(message):
