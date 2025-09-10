@@ -121,7 +121,7 @@ def CompareImages(message, server):
             json.dump(exsisting_images, file, indent=4)  
         return None
     except Exception as e:
-        logging.warning(f"Problem with calculating imagehash.{e}")
+        logging.error(f"Problem with calculating imagehash.{e}")
         new_data ={
             "hash": newimagehash,
             "message": message,

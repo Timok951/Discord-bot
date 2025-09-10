@@ -2508,3 +2508,11 @@ AttributeError: 'Message' object has no attribute 'replay'
 [2025-09-10 02:48:37] [INFO    ] discord: None
 [2025-09-10 02:48:46] [INFO    ] discord: message was appending
 [2025-09-10 02:48:56] [INFO    ] discord: Bot has started
+[2025-09-10 12:13:32] [INFO    ] discord: Imagehash exists
+[2025-09-10 12:13:32] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-10 12:13:32] [INFO    ] discord.client: logging in using static token
+[2025-09-10 12:13:34] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 8a11d477f23eb07df99ef24f89a7f54c).
+[2025-09-10 12:13:36] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-10 12:13:36] [INFO    ] discord: 0.0005443096160888672
+[2025-09-10 12:13:36] [INFO    ] discord: None
+[2025-09-10 12:13:47] [INFO    ] discord: Bot has started
