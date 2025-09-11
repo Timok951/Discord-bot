@@ -272,7 +272,8 @@ async def on_message(message):
 
         if state["content"] == content:
             state["count"] +=1
-            logger.info(f"Message content = previous. Adding count {state["count"]}")
+            countlog = state["count"]
+            logger.info(f"Message content = previous. Adding count {countlog}")
         else:
             state["content"] = content
             state["count"] = 0
