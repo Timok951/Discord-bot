@@ -235,6 +235,7 @@ async def on_message(message):
 
     if message.content.startswith('Helian') :
         await message.reply('At your service', mention_author=True)
+        return
 
     if message.content.startswith('!reminder') :
         print("message was send")
@@ -243,6 +244,7 @@ async def on_message(message):
             await message.reply(file=picture)
         except Exception as e:
             logger.error("problem with sending picture reminder")
+            return()
 
 
 
@@ -260,43 +262,6 @@ async def on_message(message):
         except Exception as e:
             logger.error("problem with sending picture reminder")
         return
-
-    """async with previous_lock:
-        if channel_id not in previous:
-            previous[channel_id] = {"content": None, "count": 0, "replied": False}
-
-        if channel_id not in cooldown:
-            cooldown[channel_id] = False
-
-        state = previous[channel_id]
-
-        if state["content"] == content:
-            state["count"] +=1
-            countlog = state["count"]
-            logger.info(f"Message content = previous. Adding count {countlog}")
-        else:
-            state["content"] = content
-            state["count"] = 0
-            state["replied"] = False
-            logger.info("New message detected reseting count")
-
-
-        if state["count"] >= 3 and not state["replied"] and not cooldown[channel_id]:
-            await message.reply(content, mention_author=False)
-            state["replied"] = True
-            state["count"] = 0
-            cooldown[channel_id] = True  #enable blocking
-            logger.info(f"Enabling cooldown message was answered")
-
-            asyncio.create_task(reset_cooldown(channel_id))
-
-async def reset_cooldown(channel_id):
-    await asyncio.sleep(1)
-    cooldown[channel_id] = False
-    #cooldown
-"""
-
-        
 
     if  message.attachments:
         for att in message.attachments:
@@ -343,6 +308,41 @@ async def reset_cooldown(channel_id):
                 logger.info("Simmilar link NOT found")
 
                 break   
+
+
+    async with previous_lock:
+        if channel_id not in previous:
+            previous[channel_id] = {"content": None, "count": 0, "replied": False}
+
+        if channel_id not in cooldown:
+            cooldown[channel_id] = False
+
+        state = previous[channel_id]
+
+        if state["content"] == content:
+            state["count"] +=1
+            countlog = state["count"]
+            logger.info(f"Message content = previous. Adding count {countlog}")
+        else:
+            state["content"] = content
+            state["count"] = 0
+            state["replied"] = False
+            logger.info("New message detected reseting count")
+
+
+        if state["count"] >= 3 and not state["replied"] and not cooldown[channel_id]:
+            await message.reply(content, mention_author=False)
+            state["replied"] = True
+            state["count"] = 0
+            cooldown[channel_id] = True  #enable blocking
+            logger.info(f"Enabling cooldown message was answered")
+
+            asyncio.create_task(reset_cooldown(channel_id))
+
+async def reset_cooldown(channel_id):
+    await asyncio.sleep(1)
+    cooldown[channel_id] = False
+    #cooldown
 
 
 
