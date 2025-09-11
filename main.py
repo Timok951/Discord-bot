@@ -20,7 +20,7 @@ from bson import json_util #if I remember correctly it for time managment
 
 data = None
 
-
+MAX_HISTORY = 3
 
 # file logging
 logger = logging.getLogger('discord')
@@ -223,8 +223,7 @@ async def on_ready():
     gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
     logger.info(gunsmokeanswers)
 
-previous = {
-}
+previous = {}
 previous_lock = asyncio.Lock()  
 cooldown = {} 
 
@@ -250,7 +249,6 @@ async def on_message(message):
 
     content = message.content
     channel_id = message.channel.id
-    cooldown = {}
     
     if content.startswith('Helian'):
         await message.reply('At your service', mention_author=True)
@@ -289,12 +287,18 @@ async def on_message(message):
                 else:
                    logger.info("Image new")
                    break
-    if (("https://x.com" in message.content) and (str(message.channel) == "sfw-arts" or str(message.channel) == "nsfw-art")):
+               
+    if (str(message.channel) == "sfw-arts" or str(message.channel) == "nsfw-art"):
         logger.info("Link in arts was detected")
-        urlpattern = r'https?://x\.com[^\s]+'
+        #find links
+        urlpattern = r'https?://[^\s]+'
+        
         urls = re.findall(urlpattern,message.content)
+        urls = [u for u in urls if ".gif" not in u.lower()]
+
         idmsg = message.jump_url
         server = message.guild.id
+        
         for url in urls:
             if CompareLinks(idmsg, server, url) != None:
                 idmsgsent = CompareLinks(idmsg, server, url)
@@ -310,33 +314,20 @@ async def on_message(message):
                 break   
 
 
-    async with previous_lock:
-        if channel_id not in previous:
-            previous[channel_id] = {"content": None, "count": 0, "replied": False}
+    if channel_id not in previous:
+        previous[channel_id] = []
 
-        if channel_id not in cooldown:
-            cooldown[channel_id] = False
+    previous[channel_id].append(content)
+    
+    if len(previous[channel_id]) > MAX_HISTORY:
+        previous[channel_id].pop(0)
+        logger.info("reset list more than 3")
 
-        state = previous[channel_id]
-
-        if state["content"] == content:
-            state["count"] +=1
-            countlog = state["count"]
-            logger.info(f"Message content = previous. Adding count {countlog}")
-        else:
-            state["content"] = content
-            state["count"] = 1
-            state["replied"] = False
-            logger.info("New message detected reseting count")
-
-
-        if state["count"] >= 3 and not state["replied"] and not cooldown[channel_id]:
+    if len(previous[channel_id]) == MAX_HISTORY and all(msg == content for msg in previous[channel_id]):
+        if not cooldown.get(channel_id, False):
             await message.reply(content, mention_author=False)
-            state["replied"] = True
-            state["count"] = 0
-            cooldown[channel_id] = True  #enable blocking
-            logger.info(f"Enabling cooldown message was answered")
-
+            cooldown[channel_id] = True
+            logger.info("3 identical messages detected, replying and enabling cooldown")
             asyncio.create_task(reset_cooldown(channel_id))
 
 async def reset_cooldown(channel_id):
