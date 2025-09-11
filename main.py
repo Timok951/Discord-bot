@@ -90,7 +90,7 @@ def returnworkanswerreminder2():
 def CompareLinks(message, server, link):
     try:
         for links in exsisting_images:
-            if links.get["link"] == link:
+            if links.get("link") == link:
                 return links["message"]
             
         return None

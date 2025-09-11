@@ -221,3 +221,9 @@ UnboundLocalError: cannot access local variable 'reset_cooldown' where it is not
 [2025-09-11 19:24:03] [INFO    ] discord: Simmilar link NOT found
 [2025-09-11 19:24:14] [INFO    ] discord: Link in arts was detected
 [2025-09-11 19:24:14] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:29:02] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:29:02] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:29:03] [INFO    ] discord: 3 identical messages detected, replying and enabling cooldown
+[2025-09-11 19:29:05] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:29:05] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:29:05] [INFO    ] discord: 3 identical messages detected, replying and enabling cooldown
