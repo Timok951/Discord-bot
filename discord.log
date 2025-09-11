@@ -288,3 +288,15 @@ UnboundLocalError: cannot access local variable 'reset_cooldown' where it is not
 [2025-09-11 19:38:44] [INFO    ] discord: Link in arts was detected
 [2025-09-11 19:38:44] [INFO    ] discord: Simmilar link found replying
 [2025-09-11 19:40:20] [INFO    ] discord: Bot has started
+[2025-09-11 19:42:07] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:42:07] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:42:07] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:42:10] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 5092f2a5f6b42f329be2aea77a0f7f0c).
+[2025-09-11 19:42:12] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:42:12] [INFO    ] discord: 0.0026226043701171875
+[2025-09-11 19:42:12] [INFO    ] discord: None
+[2025-09-11 19:42:15] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:42:17] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:42:18] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:42:20] [INFO    ] discord: 3 identical messages detected, replying and enabling cooldown
+[2025-09-11 19:42:32] [INFO    ] discord: Bot has started

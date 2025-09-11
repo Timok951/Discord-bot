@@ -286,7 +286,6 @@ async def on_message(message):
                    break
                
     if (str(message.channel) == "sfw-arts" or str(message.channel) == "nsfw-art"):
-        logger.info("Link in arts was detected")
         #find links
         urlpattern = r'https?://[^\s]+'
         
