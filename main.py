@@ -326,7 +326,7 @@ async def on_message(message):
             asyncio.create_task(reset_cooldown(channel_id))
     
     ranmsg = random.randint(0, 550)
-    if (ranmsg == 1000 and (str(message.channel) != "sfw-arts" or str(message.channel) != "nsfw-art")):
+    if (ranmsg == 550 and (str(message.channel) != "sfw-arts" or str(message.channel) != "nsfw-art")):
         await message.reply(content, mention_author=False)
         logger.info("random = 550 random reply initiated")
         asyncio.create_task(reset_cooldown(channel_id))
