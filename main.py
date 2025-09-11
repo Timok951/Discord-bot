@@ -88,23 +88,20 @@ def returnworkanswerreminder2():
     return workreminder[ran]
 
 def CompareLinks(message, server, link):
-    try:
-        for links in exsisting_images:
-            if links.get("link") == link:
-                return links["message"]
-            
-        return None
-    except Exception as e:
-        new_data ={
-            "message": message,
-            "server": server,
-            "link": link,
-            }
-        exsisting_images.append(new_data)
-        with open('imagehash.json','w') as file:
-            json.dump(exsisting_images, file, indent=4)  
-        return None
-
+    for links in exsisting_images:
+        if links.get("link") == link and links.get("server") == server:
+            return links["message"]
+    #if not found
+    new_data ={
+        "message": message,
+        "server": server,
+        "link": link,
+        }
+    exsisting_images.append(new_data)
+    with open('imagehash.json','w') as file:
+        json.dump(exsisting_images, file, indent=4)  
+    return None
+    
 def CompareImages(message, server):
     newimagehash = CalcImageHash("images/savedimage.png")
     try:
@@ -300,8 +297,9 @@ async def on_message(message):
         server = message.guild.id
         
         for url in urls:
-            if CompareLinks(idmsg, server, url) != None:
-                idmsgsent = CompareLinks(idmsg, server, url)
+            idmsgsent = CompareLinks(idmsg, server, url)
+            if idmsgsent is not None:
+
                 try:
                     await message.reply(f"" + returnanswers() + str(idmsgsent), mention_author=True)
                     logger.info("Simmilar link found replying")
@@ -312,7 +310,7 @@ async def on_message(message):
                 logger.info("Simmilar link NOT found")
   
 
-
+    ran = random.randint(0, 150)
     if channel_id not in previous:
         previous[channel_id] = []
 
@@ -328,7 +326,13 @@ async def on_message(message):
             cooldown[channel_id] = True
             logger.info("3 identical messages detected, replying and enabling cooldown")
             asyncio.create_task(reset_cooldown(channel_id))
+    
+    if ran == 150:
+        await message.reply(content, mention_author=False)
+        logger.info("random =150 random reply initiated")
+        asyncio.create_task(reset_cooldown(channel_id))
 
+    
 async def reset_cooldown(channel_id):
     await asyncio.sleep(1)
     cooldown[channel_id] = False

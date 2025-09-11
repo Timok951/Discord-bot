@@ -227,3 +227,64 @@ UnboundLocalError: cannot access local variable 'reset_cooldown' where it is not
 [2025-09-11 19:29:05] [INFO    ] discord: Link in arts was detected
 [2025-09-11 19:29:05] [INFO    ] discord: Simmilar link NOT found
 [2025-09-11 19:29:05] [INFO    ] discord: 3 identical messages detected, replying and enabling cooldown
+[2025-09-11 19:30:48] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:30:48] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:30:50] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:30:50] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:35:24] [INFO    ] discord: Bot has started
+[2025-09-11 19:35:26] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:35:26] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:35:26] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:35:30] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 7899f9fa1d6d0472688c451fbd548fa3).
+[2025-09-11 19:35:32] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:35:32] [INFO    ] discord: 0.01433420181274414
+[2025-09-11 19:35:32] [INFO    ] discord: None
+[2025-09-11 19:35:45] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:35:45] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:35:48] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:35:48] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:36:18] [INFO    ] discord: Bot has started
+[2025-09-11 19:36:22] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:36:22] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:36:22] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:36:23] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 9e94cf7e9800de2cb2f9db9576f440e7).
+[2025-09-11 19:36:26] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:36:26] [INFO    ] discord: 0.0010020732879638672
+[2025-09-11 19:36:26] [INFO    ] discord: None
+[2025-09-11 19:36:36] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:36:37] [INFO    ] discord: Simmilar link found replying
+[2025-09-11 19:36:42] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:36:43] [INFO    ] discord: Simmilar link found replying
+[2025-09-11 19:37:02] [INFO    ] discord: Bot has started
+[2025-09-11 19:37:07] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:37:08] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:37:08] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:37:09] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 1c4c25f4c191ebb9df0dc5188a066a7a).
+[2025-09-11 19:37:11] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:37:11] [INFO    ] discord: 0.0005142688751220703
+[2025-09-11 19:37:11] [INFO    ] discord: None
+[2025-09-11 19:37:19] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:37:20] [INFO    ] discord: Simmilar link found replying
+[2025-09-11 19:37:34] [INFO    ] discord: Bot has started
+[2025-09-11 19:37:36] [INFO    ] discord: Imagehas does not exists. Creating imagehash file
+[2025-09-11 19:37:36] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:37:36] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:37:39] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 1c4da60a5db8ba77386d52a8d66cc2ed).
+[2025-09-11 19:37:41] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:37:41] [INFO    ] discord: 0.0010025501251220703
+[2025-09-11 19:37:41] [INFO    ] discord: None
+[2025-09-11 19:37:50] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:37:51] [INFO    ] discord: Simmilar link found replying
+[2025-09-11 19:37:57] [INFO    ] discord: Bot has started
+[2025-09-11 19:38:36] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:38:36] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:38:36] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:38:38] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 85e9d5ebe9dbfa59bbbce33dadff85ed).
+[2025-09-11 19:38:40] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:38:40] [INFO    ] discord: 0.0
+[2025-09-11 19:38:40] [INFO    ] discord: None
+[2025-09-11 19:38:42] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:38:42] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:38:44] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:38:44] [INFO    ] discord: Simmilar link found replying
+[2025-09-11 19:40:20] [INFO    ] discord: Bot has started
