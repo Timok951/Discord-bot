@@ -325,10 +325,10 @@ async def on_message(message):
             logger.info("3 identical messages detected, replying and enabling cooldown")
             asyncio.create_task(reset_cooldown(channel_id))
     
-    ranmsg = random.randint(0, 150)
-    if ranmsg == 150:
+    ranmsg = random.randint(0, 550)
+    if (ranmsg == 1000 and (str(message.channel) != "sfw-arts" or str(message.channel) != "nsfw-art")):
         await message.reply(content, mention_author=False)
-        logger.info("random =150 random reply initiated")
+        logger.info("random = 550 random reply initiated")
         asyncio.create_task(reset_cooldown(channel_id))
 
     
