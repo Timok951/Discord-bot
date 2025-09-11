@@ -271,25 +271,28 @@ async def on_message(message):
         state = previous[channel_id]
 
         if state["content"] == content:
-            state["count"] += 1
+            state["count"] +=1
+            logger.info(f"Message content = previous. Adding count {state["count"]}")
         else:
             state["content"] = content
-            state["count"] = 1
+            state["count"] = 0
             state["replied"] = False
+            logger.info("New message detected reseting count")
 
-        # если канал в cooldown, не отвечаем
+
         if state["count"] >= 3 and not state["replied"] and not cooldown[channel_id]:
             await message.reply(content, mention_author=False)
             state["replied"] = True
             state["count"] = 0
-            cooldown[channel_id] = True  # включаем блокировку
+            cooldown[channel_id] = True  #enable blocking
+            logger.info(f"Enabling cooldown message was answered")
 
-            # выключаем блокировку через 1 секунду
             asyncio.create_task(reset_cooldown(channel_id))
 
 async def reset_cooldown(channel_id):
     await asyncio.sleep(1)
     cooldown[channel_id] = False
+    #cooldown
 
 
         
