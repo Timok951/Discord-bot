@@ -309,7 +309,6 @@ async def on_message(message):
                 logger.info("Simmilar link NOT found")
   
 
-    ran = random.randint(0, 150)
     if channel_id not in previous:
         previous[channel_id] = []
 
@@ -326,7 +325,8 @@ async def on_message(message):
             logger.info("3 identical messages detected, replying and enabling cooldown")
             asyncio.create_task(reset_cooldown(channel_id))
     
-    if ran == 150:
+    ranmsg = random.randint(0, 150)
+    if ranmsg == 150:
         await message.reply(content, mention_author=False)
         logger.info("random =150 random reply initiated")
         asyncio.create_task(reset_cooldown(channel_id))

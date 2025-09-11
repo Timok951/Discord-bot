@@ -300,3 +300,31 @@ UnboundLocalError: cannot access local variable 'reset_cooldown' where it is not
 [2025-09-11 19:42:18] [INFO    ] discord: Link in arts was detected
 [2025-09-11 19:42:20] [INFO    ] discord: 3 identical messages detected, replying and enabling cooldown
 [2025-09-11 19:42:32] [INFO    ] discord: Bot has started
+[2025-09-11 19:43:12] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:43:12] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:43:12] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:43:15] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: d31d2401eeed44902db1900226204df0).
+[2025-09-11 19:43:17] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:43:17] [INFO    ] discord: 0.0005171298980712891
+[2025-09-11 19:43:17] [INFO    ] discord: None
+[2025-09-11 19:43:21] [INFO    ] discord: 3 identical messages detected, replying and enabling cooldown
+[2025-09-11 19:43:25] [INFO    ] discord: 3 identical messages detected, replying and enabling cooldown
+[2025-09-11 19:43:35] [INFO    ] discord: Bot has started
+[2025-09-11 19:43:43] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:43:43] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:43:43] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:43:45] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 90ce5813129bedf826346046228bead4).
+[2025-09-11 19:43:47] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:43:47] [INFO    ] discord: 0.0005445480346679688
+[2025-09-11 19:43:47] [INFO    ] discord: None
+[2025-09-11 19:43:58] [INFO    ] discord: Bot has started
+[2025-09-11 19:44:45] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:44:45] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:44:45] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:44:46] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 88c7ee8d5c1b74b5338d2d4080467d21).
+[2025-09-11 19:44:48] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:44:48] [INFO    ] discord: 0.0005638599395751953
+[2025-09-11 19:44:48] [INFO    ] discord: None
+[2025-09-11 19:44:54] [INFO    ] discord: random =150 random reply initiated
+[2025-09-11 19:44:57] [INFO    ] discord: random =150 random reply initiated
+[2025-09-11 19:45:01] [INFO    ] discord: Bot has started
