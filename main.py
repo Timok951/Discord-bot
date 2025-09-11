@@ -325,7 +325,7 @@ async def on_message(message):
             logger.info(f"Message content = previous. Adding count {countlog}")
         else:
             state["content"] = content
-            state["count"] = 0
+            state["count"] = 1
             state["replied"] = False
             logger.info("New message detected reseting count")
 
