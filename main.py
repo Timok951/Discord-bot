@@ -303,8 +303,10 @@ async def reset_cooldown(channel_id):
             if (att.content_type.startswith("image") and (str(message.channel) == "sfw-arts" or  str(message.channel)=="nsfw-art")):
                 idmsg = message.jump_url
                 server = message.guild.id
+                logger.info("Image in arts was detected")
                 try:
                     await att.save("images/savedimage.png")
+                    logger.info("Image for comparsion saved")
                 except Exception as e:
                     logger.error("problem with saving image")
                     pinglog = ping3.ping("discord.com")
@@ -314,13 +316,16 @@ async def reset_cooldown(channel_id):
                     idmsgsent  = CompareImages(idmsg, server)
                     try:
                         await message.reply(f"" + returnanswers() + str(idmsgsent) , mention_author=True)
+                        logger.info("Image with simularity find replying")
 
                     except:
                        await message.channel.send("I saw the image, but it disappeared..... anyway.")
                        logger.warning("Message was already deleted or error occured")            
                 else:
+                   logger.info("Image new")
                    break
     if (("https://x.com" in message.content) and (str(message.channel) == "sfw-arts" or str(message.channel) == "nsfw-art")):
+        logger.info("Link in arts was detected")
         urlpattern = r'https?://x\.com[^\s]+'
         urls = re.findall(urlpattern,message.content)
         idmsg = message.jump_url
@@ -330,11 +335,13 @@ async def reset_cooldown(channel_id):
                 idmsgsent = CompareLinks(idmsg, server, url)
                 try:
                     await message.reply(f"" + returnanswers() + str(idmsgsent), mention_author=True)
-
+                    logger.info("Simmilar link found replying")
                 except:
                     await message.channel.send("I saw the image, but it disappeared..... anyway.")
                     logger.warning("Message was already deleted or error occured")            
             else: 
+                logger.info("Simmilar link NOT found")
+
                 break   
 
 
