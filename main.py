@@ -90,10 +90,10 @@ def returnworkanswerreminder2():
 def CompareLinks(message, server, link):
     try:
         for links in exsisting_images:
-            if links["link"] == link:
+            if links.get["link"] == link:
                 return links["message"]
-            else:
-                return None
+            
+        return None
     except Exception as e:
         new_data ={
             "message": message,
@@ -310,18 +310,17 @@ async def on_message(message):
                     logger.warning("Message was already deleted or error occured")            
             else: 
                 logger.info("Simmilar link NOT found")
-
-                break   
+  
 
 
     if channel_id not in previous:
         previous[channel_id] = []
 
     previous[channel_id].append(content)
-    
+
     if len(previous[channel_id]) > MAX_HISTORY:
         previous[channel_id].pop(0)
-        logger.info("reset list more than 3")
+    
 
     if len(previous[channel_id]) == MAX_HISTORY and all(msg == content for msg in previous[channel_id]):
         if not cooldown.get(channel_id, False):

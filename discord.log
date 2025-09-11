@@ -206,3 +206,18 @@ UnboundLocalError: cannot access local variable 'reset_cooldown' where it is not
 [2025-09-10 22:02:26] [INFO    ] discord: 0.0
 [2025-09-10 22:02:26] [INFO    ] discord: None
 [2025-09-10 22:02:52] [INFO    ] discord: Bot has started
+[2025-09-11 19:23:22] [INFO    ] discord: Imagehas does not exists. Creating imagehash file
+[2025-09-11 19:23:22] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:23:22] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:23:25] [INFO    ] discord: Bot has started
+[2025-09-11 19:23:39] [INFO    ] discord: Imagehash exists
+[2025-09-11 19:23:39] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-11 19:23:39] [INFO    ] discord.client: logging in using static token
+[2025-09-11 19:23:41] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 6ae703da329d271c88800174948023a5).
+[2025-09-11 19:23:43] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-11 19:23:43] [INFO    ] discord: 0.006529331207275391
+[2025-09-11 19:24:03] [INFO    ] discord: None
+[2025-09-11 19:24:03] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:24:03] [INFO    ] discord: Simmilar link NOT found
+[2025-09-11 19:24:14] [INFO    ] discord: Link in arts was detected
+[2025-09-11 19:24:14] [INFO    ] discord: Simmilar link NOT found
