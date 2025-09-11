@@ -261,7 +261,7 @@ async def on_message(message):
             logger.error("problem with sending picture reminder")
         return
 
-    async with previous_lock:
+    """async with previous_lock:
         if channel_id not in previous:
             previous[channel_id] = {"content": None, "count": 0, "replied": False}
 
@@ -294,7 +294,7 @@ async def reset_cooldown(channel_id):
     await asyncio.sleep(1)
     cooldown[channel_id] = False
     #cooldown
-
+"""
 
         
 
