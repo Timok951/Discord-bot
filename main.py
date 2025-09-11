@@ -106,6 +106,8 @@ def CompareImages(message, server):
     newimagehash = CalcImageHash("images/savedimage.png")
     try:
         for img in exsisting_images:
+            if not isinstance(img.get("hash"), list):
+                continue  #skip without hash
             hashscompare = CompareHash(img["hash"], newimagehash)
             if hashscompare > 0.99999 and img["server"] == server:
                 return img["message"]
