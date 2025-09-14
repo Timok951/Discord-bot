@@ -328,3 +328,70 @@ UnboundLocalError: cannot access local variable 'reset_cooldown' where it is not
 [2025-09-11 19:44:54] [INFO    ] discord: random =150 random reply initiated
 [2025-09-11 19:44:57] [INFO    ] discord: random =150 random reply initiated
 [2025-09-11 19:45:01] [INFO    ] discord: Bot has started
+[2025-09-14 13:01:05] [INFO    ] discord: Imagehash exists
+[2025-09-14 13:01:05] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-14 13:01:05] [INFO    ] discord.client: logging in using static token
+[2025-09-14 13:01:08] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 1bcc527027681a5157b7a80489ae019d).
+[2025-09-14 13:01:10] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-14 13:01:11] [INFO    ] discord: 0.007001399993896484
+[2025-09-14 13:01:28] [INFO    ] discord: Gunsmoke time! 🚨🚬 
+Do not forget go on boss-battle
+[2025-09-14 13:01:37] [INFO    ] discord: Bot has started
+[2025-09-14 13:01:43] [INFO    ] discord: Imagehash exists
+[2025-09-14 13:01:43] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-14 13:01:43] [INFO    ] discord.client: logging in using static token
+[2025-09-14 13:01:47] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 11b047a50071170b3c5c6ec48ab02eb4).
+[2025-09-14 13:01:49] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-14 13:01:49] [INFO    ] discord: 0.0
+[2025-09-14 13:01:49] [INFO    ] discord: Gunsmoke time! 🚨🚬 
+Do not forget go on boss-battle
+[2025-09-14 13:01:52] [INFO    ] discord: Bot has started
+[2025-09-14 13:03:01] [INFO    ] discord: Imagehash exists
+[2025-09-14 13:03:01] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-14 13:03:01] [INFO    ] discord.client: logging in using static token
+[2025-09-14 13:03:05] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: a7c72becc4459cd7412cf8b9f4b84b2d).
+[2025-09-14 13:03:07] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-14 13:03:07] [INFO    ] discord: 0.0009992122650146484
+[2025-09-14 13:03:07] [INFO    ] discord: None
+[2025-09-14 13:03:08] [INFO    ] discord: Bot has started
+[2025-09-14 13:03:10] [INFO    ] discord: Imagehash exists
+[2025-09-14 13:03:10] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-14 13:03:10] [INFO    ] discord.client: logging in using static token
+[2025-09-14 13:03:13] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: e1628878c0023a5119cb9dafe27eb16e).
+[2025-09-14 13:03:15] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-14 13:03:15] [INFO    ] discord: 0.0
+[2025-09-14 13:03:25] [INFO    ] discord: None
+[2025-09-14 13:03:32] [INFO    ] discord: Bot has started
+[2025-09-14 13:09:18] [INFO    ] discord: Imagehash exists
+[2025-09-14 13:09:18] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-14 13:09:18] [INFO    ] discord.client: logging in using static token
+[2025-09-14 13:09:22] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 9574f79866b07f193124f8646bd47a8b).
+[2025-09-14 13:09:24] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-14 13:09:24] [INFO    ] discord: 0.016074419021606445
+[2025-09-14 13:09:24] [INFO    ] discord: None
+[2025-09-14 13:10:35] [INFO    ] discord: Bot has started
+[2025-09-14 13:10:37] [INFO    ] discord: Imagehash exists
+[2025-09-14 13:10:37] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-14 13:10:37] [INFO    ] discord.client: logging in using static token
+[2025-09-14 13:10:40] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 02c1f5ab0e76a1af4f0093862354e6b7).
+[2025-09-14 13:10:42] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-14 13:10:42] [INFO    ] discord: 0.0
+[2025-09-14 13:10:42] [INFO    ] discord: None
+[2025-09-14 13:11:05] [INFO    ] discord: Bot has started
+[2025-09-14 13:12:43] [INFO    ] discord: Imagehash exists
+[2025-09-14 13:12:43] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-14 13:12:43] [INFO    ] discord.client: logging in using static token
+[2025-09-14 13:12:46] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 90cc36dd77f01935238776b8e65592b2).
+[2025-09-14 13:12:48] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-14 13:12:48] [INFO    ] discord: 0.018503665924072266
+[2025-09-14 13:12:48] [INFO    ] discord: Gunsmoke time! 🚨🚬 
+Do not forget go on boss-battle
+[2025-09-14 13:13:03] [INFO    ] discord: Bot has started
+[2025-09-14 13:14:50] [INFO    ] discord: Imagehash exists
+[2025-09-14 13:14:50] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-14 13:14:50] [INFO    ] discord.client: logging in using static token
+[2025-09-14 13:14:52] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 298d8f5729ceb3dc972aa27c54f71e1b).
+[2025-09-14 13:14:54] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-14 13:14:54] [INFO    ] discord: 0.0005257129669189453
+[2025-09-14 13:14:54] [INFO    ] discord: None
+[2025-09-14 13:15:03] [INFO    ] discord: Bot has started
