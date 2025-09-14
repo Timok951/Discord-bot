@@ -55,7 +55,7 @@ class Gunsmokecheck:
     @staticmethod
     def checkgunsmoke(): 
         
-        datenow = datetime.datetime.today()
+        datenow = datetime.datetime.now()
 
         date = Gunsmokecheck.readjson()
        
@@ -74,27 +74,24 @@ class Gunsmokecheck:
         else:
             print(f"lastlaunch {lastlaunch}")
         
-        #if gunsmoke active    
-        if lastlaunch.date() == datenow.date():
-            print("Gunsmoke was already launched today")
-            return None
-        
         #if gunsmoke ended and has 7 days lasted     
         if gunsmokeduration > 0:
             #Gunsmoke continue
             print("Gunsmoke has started")
             gunsmokeduration -=1
             Gunsmokecheck.writejson(lastgunsmoke, gunsmokeduration)
-            return(str(gunsmokereturn[0]))
+            return str (gunsmokereturn[0])
         
         #gunsmoke ended     
         if gunsmokeduration == 0 and daysincelastlaunch >= 7:
             print("Gunsmoke duration")
-            gunsmokeduration = 7
-            lastgunsmoke = datenow
-            return(str[gunsmokereturn[0]])
+            if lastlaunch.date() != datenow.date():
+                gunsmokeduration = 7
+                lastgunsmoke = datenow
+                Gunsmokecheck.writejson(lastgunsmoke, gunsmokeduration)
+                return str(gunsmokereturn[0])
+        return None
         
-        print("No gunsmoke for today")
-        Gunsmokecheck.writejson(lastgunsmoke, gunsmokeduration)
+        
 
 

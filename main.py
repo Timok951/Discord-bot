@@ -185,7 +185,6 @@ async def platoon_timer():
         logger.info(ping3.ping("discord.com"))
         
     gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
-
     if gunsmokeanswers != None:
         await channel.send(str(gunsmokeanswers))
 
