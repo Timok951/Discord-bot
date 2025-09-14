@@ -10,11 +10,9 @@ class Gunsmokecheck:
 
     @staticmethod
     def writejson(datelastgunsmoke, gunsmokeduration, update_lastlaunch=False):
-        """Сохраняет JSON с данными Gunsmoke. update_lastlaunch = True только при новом запуске"""
         if update_lastlaunch:
             lastlaunch = datetime.datetime.utcnow()
         else:
-            # Если файл уже есть, подгружаем существующее значение lastlaunch
             if os.path.exists("scheldue.json"):
                 with open("scheldue.json", "r") as f:
                     try:
@@ -97,7 +95,7 @@ def checkgunsmoke():
     print(f"Days since last Gunsmoke: {days_since_lastgunsmoke}")
     print(f"Days since last check launch: {days_since_lastlaunch}")
 
-    if gunsmokeduration == 0 and days_since_lastgunsmoke >= 7:
+    if gunsmokeduration == 0 and days_since_lastgunsmoke >= 14:
         print("Gunsmoke duration — new cycle")
         gunsmokeduration = 7
         lastgunsmoke = datenow

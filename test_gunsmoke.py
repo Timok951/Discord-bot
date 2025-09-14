@@ -16,7 +16,6 @@ def test_daily_gunsmoke_progress():
     result1 = Gunsmokecheck.checkgunsmoke()
     assert result1 == gunsmokereturn[0]
 
-    # Считываем JSON и проверяем, что duration уменьшился
     data = Gunsmokecheck.readjson()
     assert data["gunsmokeduration"] == duration - 1
 
