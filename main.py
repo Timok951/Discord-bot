@@ -12,14 +12,14 @@ import re
 import logging
 import ping3  #for pinging discord servers because with RKN it has some problems
 import gunsmoke
-from answerslist import answers, work, workreminder
+from answerslist import answers, work, workreminder, pasts
 from discord.ext import tasks
 import asyncio
 
 from bson import json_util #if I remember correctly it for time managment
 
 data = None
-
+pastasend = False
 MAX_HISTORY = 3
 
 # file logging
@@ -193,6 +193,8 @@ async def platoon_timer():
     if ran == 0:
         try:
             await channel.send(file=get_picture())
+            logger.error("Sending picture")
+
         except Exception as e:
             logger.error("problem with sending picture reminder")
             logger.info(ping3.ping("discord.com"))
@@ -205,6 +207,7 @@ async def platoon_timer2():
         channel = client.get_channel(1321747276129112064)
         logger.info("reminder for previous task was send")
         await channel.send(returnworkanswerreminder2())
+        pastasend = False
     except Exception as e:
         logger.error("problem with getting to channel and sending workanswereminder for previous task")
         logger.info(ping3.ping("discord.com"))
@@ -257,6 +260,7 @@ async def on_message(message):
         return
     if content.startswith('!reminder'):
         await message.reply(returnworkanswereminder1())
+        pastasend = False
         try:
             await message.reply(file=picture)
         except Exception as e:
@@ -312,7 +316,25 @@ async def on_message(message):
                     logger.warning("Message was already deleted or error occured")            
             else: 
                 logger.info("Simmilar link NOT found")
-  
+    
+    #Pasts            
+    if ("лор волчицы" in content or "лор бураска" in content) and pastasend == False:
+        await message.reply( pasts[3] ,mention_author=False)
+        pastasend = True
+        
+    if ("ниды" in content or "all you need" in content or "гф2" or "гансмок") and pastasend == False:
+        await message.reply( pasts[0] ,mention_author=False)
+        pastasend = True
+        
+    if ("деп" in content or "додеп" in content) and pastasend == False:
+        await message.reply( pasts[1] ,mention_author=False)
+        pastasend = True
+    
+    if ("когда" in content or "глобал" in content) and pastasend == False:
+        await message.reply( pasts[2] ,mention_author=False)
+        pastasend = True
+    
+
 
     if channel_id not in previous:
         previous[channel_id] = []
@@ -336,6 +358,7 @@ async def on_message(message):
         logger.info("random = 550 random reply initiated")
         asyncio.create_task(reset_cooldown(channel_id))
 
+        
     
 async def reset_cooldown(channel_id):
     await asyncio.sleep(1)
