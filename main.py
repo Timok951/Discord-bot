@@ -86,6 +86,8 @@ def returnworkanswereminder1():
 def returnworkanswerreminder2():
     ran = random.randint(0, 1)
     return workreminder[ran]
+def get_picture():
+    return discord.File("reminderimage.png")
 
 def CompareLinks(message, server, link):
     for links in exsisting_images:
@@ -190,7 +192,7 @@ async def platoon_timer():
 
     if ran == 0:
         try:
-            await channel.send(file=picture)
+            await channel.send(file=get_picture())
         except Exception as e:
             logger.error("problem with sending picture reminder")
             logger.info(ping3.ping("discord.com"))
@@ -228,6 +230,8 @@ cooldown = {}
 @client.event
 async def on_message(message):
     if message.author == client.user:
+        return
+    if message.author.bot:
         return
 
     if message.content.startswith('Helian') :
