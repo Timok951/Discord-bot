@@ -19,8 +19,8 @@ import asyncio
 from bson import json_util #if I remember correctly it for time managment
 
 data = None
-pastasend = False
 MAX_HISTORY = 3
+pastasend = False
 
 # file logging
 logger = logging.getLogger('discord')
@@ -203,6 +203,7 @@ async def platoon_timer():
 #Time reminder for previous task
 @tasks.loop(time=timereminder2)
 async def platoon_timer2():
+    global pastasend
     try:
         channel = client.get_channel(1321747276129112064)
         logger.info("reminder for previous task was send")
@@ -232,6 +233,8 @@ cooldown = {}
 
 @client.event
 async def on_message(message):
+    global pastasend  
+
     if message.author == client.user:
         return
     if message.author.bot:
@@ -317,22 +320,26 @@ async def on_message(message):
             else: 
                 logger.info("Simmilar link NOT found")
     
-    #Pasts            
+    #Pasts          
     if ("лор волчицы" in content or "лор бураска" in content) and pastasend == False:
         await message.reply( pasts[3] ,mention_author=False)
         pastasend = True
-        
-    if ("ниды" in content or "all you need" in content or "гф2" or "гансмок") and pastasend == False:
+        logger.info("Burask past was send")
+
+    if ("ниды" in content or "all you need" in content or "гансмок" in content) and pastasend == False:
         await message.reply( pasts[0] ,mention_author=False)
         pastasend = True
+        logger.info("Need past was send")
         
     if ("деп" in content or "додеп" in content) and pastasend == False:
         await message.reply( pasts[1] ,mention_author=False)
         pastasend = True
+        logger.info("Dodep past was send")
     
-    if ("когда" in content or "глобал" in content) and pastasend == False:
+    if ("когда" in content or "глобал" in content or "гф2" in content ) and pastasend == False:
         await message.reply( pasts[2] ,mention_author=False)
         pastasend = True
+        logger.info("when global past was send")
     
 
 

@@ -395,3 +395,44 @@ Do not forget go on boss-battle
 [2025-09-14 13:14:54] [INFO    ] discord: 0.0005257129669189453
 [2025-09-14 13:14:54] [INFO    ] discord: None
 [2025-09-14 13:15:03] [INFO    ] discord: Bot has started
+[2025-09-22 01:25:33] [INFO    ] discord: Imagehash exists
+[2025-09-22 01:25:33] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-22 01:25:33] [INFO    ] discord.client: logging in using static token
+[2025-09-22 01:25:36] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 12900e2fb6484aaa0b219a7e1a7a6db5).
+[2025-09-22 01:25:38] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-22 01:25:38] [INFO    ] discord: 0.02651357650756836
+[2025-09-22 01:25:38] [INFO    ] discord: None
+[2025-09-22 01:27:00] [ERROR   ] discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\timof\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\discord\client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "G:\Projects Big\Programming\Discord bot\main.py", line 322, in on_message
+    if ("лор волчицы" in content or "лор бураска" in content) and pastasend == False:
+                                                                  ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'pastasend' where it is not associated with a value
+[2025-09-22 01:27:05] [INFO    ] discord: Bot has started
+[2025-09-22 01:28:28] [INFO    ] discord: Imagehash exists
+[2025-09-22 01:28:28] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-22 01:28:28] [INFO    ] discord.client: logging in using static token
+[2025-09-22 01:28:30] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 84028df39e722e5590c9cf203c7ba155).
+[2025-09-22 01:28:32] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-22 01:28:32] [INFO    ] discord: 0.0
+[2025-09-22 01:28:32] [INFO    ] discord: None
+[2025-09-22 01:28:34] [ERROR   ] discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\timof\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\discord\client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "G:\Projects Big\Programming\Discord bot\main.py", line 321, in on_message
+    if ("лор волчицы" in content or "лор бураска" in content) and pastasend == False:
+                                                                  ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'pastasend' where it is not associated with a value
+[2025-09-22 01:32:51] [INFO    ] discord: Bot has started
+[2025-09-22 01:33:52] [INFO    ] discord: Imagehash exists
+[2025-09-22 01:33:52] [WARNING ] discord.client: PyNaCl is not installed, voice will NOT be supported
+[2025-09-22 01:33:52] [INFO    ] discord.client: logging in using static token
+[2025-09-22 01:33:58] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 7227d2db91b553f6d98b724ccac88b26).
+[2025-09-22 01:33:59] [INFO    ] discord: Dodep past was send
+[2025-09-22 01:34:00] [INFO    ] discord: We have logged as Helian#1038
+[2025-09-22 01:34:00] [INFO    ] discord: 0.008543252944946289
+[2025-09-22 01:34:00] [INFO    ] discord: None
+[2025-09-22 01:34:29] [INFO    ] discord: Bot has started
