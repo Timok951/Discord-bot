@@ -336,7 +336,7 @@ async def on_message(message):
         pastasend = True
         logger.info("Dodep past was send")
     
-    if ("когда" in content or "глобал" in content or "гф2" in content ) and pastasend == False:
+    if ("когда глобал" in content or "глобал" in content or "техи" in content or "технические работы" in content ) and pastasend == False:
         await message.reply( pasts[2] ,mention_author=False)
         pastasend = True
         logger.info("when global past was send")
