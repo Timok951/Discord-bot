@@ -321,7 +321,7 @@ async def on_message(message):
                 logger.info("Simmilar link NOT found")
     
     #Pasts          
-    if ("лор волчицы" in content or "лор бураска" in content) and pastasend == False:
+    if ("лор волчицы" in content or "лор бураска" in content) or ("волчица" in content and "бурасик" in content) or ("волчица" in content and "бураск" in content) and pastasend == False:
         await message.reply( pasts[3] ,mention_author=False)
         pastasend = True
         logger.info("Burask past was send")
