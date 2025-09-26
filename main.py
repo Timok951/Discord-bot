@@ -180,16 +180,16 @@ async def platoon_timer():
 
     try:
         channel = client.get_channel(1321747276129112064)
-        await channel.send(returnworkanswereminder1())
-        logger.info("reminder for current day was send")
+        #await channel.send(returnworkanswereminder1())
+        #logger.info("reminder for current day was send")
     except Exception as e:
         logger.error("problem with getting channel and sending the message for first daily reminder")
         logger.info(ping3.ping("discord.com"))
         
     gunsmokeanswers = gunsmoke.Gunsmokecheck.checkgunsmoke()
-    if gunsmokeanswers != None:
-        await channel.send(str(gunsmokeanswers))
-
+    #if gunsmokeanswers != None:
+      #  await channel.send(str(gunsmokeanswers))
+      
     if ran == 0:
         try:
             await channel.send(file=get_picture())
@@ -205,9 +205,9 @@ async def platoon_timer():
 async def platoon_timer2():
     global pastasend
     try:
-        channel = client.get_channel(1321747276129112064)
-        logger.info("reminder for previous task was send")
-        await channel.send(returnworkanswerreminder2())
+        #channel = client.get_channel(1321747276129112064)
+        #logger.info("reminder for previous task was send")
+        #await channel.send(returnworkanswerreminder2())
         pastasend = False
     except Exception as e:
         logger.error("problem with getting to channel and sending workanswereminder for previous task")
@@ -245,8 +245,8 @@ async def on_message(message):
         return
 
     if message.content.startswith('!reminder') :
-        print("message was send")
-        await message.reply(returnworkanswereminder1())
+        #print("message was send")
+       # await message.reply(returnworkanswereminder1())
         try:
             await message.reply(file=picture)
         except Exception as e:
