@@ -21,6 +21,7 @@ from bson import json_util #if I remember correctly it for time managment
 data = None
 MAX_HISTORY = 3
 pastasend = False
+pastasend_lock = asyncio.Lock()
 
 # file logging
 logger = logging.getLogger('discord')
@@ -320,26 +321,27 @@ async def on_message(message):
             else: 
                 logger.info("Simmilar link NOT found")
     
-    #Pasts          
-    if ("лор волчицы" in content or "лор бураска" in content) or ("волчица" in content and "бурасик" in content) or ("волчица" in content and "бураск" in content) and pastasend == False:
-        await message.reply( pasts[3] ,mention_author=False)
-        pastasend = True
-        logger.info("Burask past was send")
+    #Pasts
+    async with pastasend_lock:          
+        if ("лор волчицы" in content or "лор бураска" in content) or ("волчица" in content and "бурасик" in content) or ("волчица" in content and "бураск" in content) and pastasend == False:
+            await message.reply( pasts[3] ,mention_author=False)
+            pastasend = True
+            logger.info("Burask past was send")
 
-    if ("ниды" in content or "all you need" in content or "гансмок" in content) and pastasend == False:
-        await message.reply( pasts[0] ,mention_author=False)
-        pastasend = True
-        logger.info("Need past was send")
+        if ("ниды" in content or "all you need" in content or "гансмок" in content) and pastasend == False:
+            await message.reply( pasts[0] ,mention_author=False)
+            pastasend = True
+            logger.info("Need past was send")
         
-    if ("деп" in content or "додеп" in content) and pastasend == False:
-        await message.reply( pasts[1] ,mention_author=False)
-        pastasend = True
-        logger.info("Dodep past was send")
+        if ("деп" in content or "додеп" in content) and pastasend == False:
+            await message.reply( pasts[1] ,mention_author=False)
+            pastasend = True
+            logger.info("Dodep past was send")
     
-    if ("когда глобал" in content or "глобал" in content or "техи" in content or "технические работы" in content ) and pastasend == False:
-        await message.reply( pasts[2] ,mention_author=False)
-        pastasend = True
-        logger.info("when global past was send")
+        if ("когда глобал" in content or "глобал" in content or "техи" in content or "технические работы" in content ) and pastasend == False:
+            await message.reply( pasts[2] ,mention_author=False)
+            pastasend = True
+            logger.info("when global past was send")
     
 
 
